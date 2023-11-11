@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'com.tif22.ordering_food'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.tif22.ordering_food"
