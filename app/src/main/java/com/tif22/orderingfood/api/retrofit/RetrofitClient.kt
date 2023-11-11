@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-        const val BASE_URL : String = "http://????" // local server
+        const val BASE_URL : String = "http://192.168.1.17/OrderingFood/FilePhp/" // local server
 
     /**
      * connect to rest server
