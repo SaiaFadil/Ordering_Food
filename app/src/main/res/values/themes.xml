@@ -3,6 +3,7 @@
     <style name="Base.Theme.Ordering_Food" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
     </style>
 
     <style name="Theme.Ordering_Food" parent="Base.Theme.Ordering_Food" />
