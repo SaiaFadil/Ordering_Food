@@ -8,7 +8,7 @@ import retrofit2.http.FormUrlEncoded;
 interface RetrofitEndPoint {
 
     @FormUrlEncoded
-    @POST("")
+    @POST("account/login.php")
     fun login(
         @Field("email") email : String,
         @Field("password") password : String
