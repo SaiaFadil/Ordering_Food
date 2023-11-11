@@ -1,8 +1,10 @@
-package com.tif22.ordering_food;
+package com.tif22.orderingfood.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.tif22.orderingfood.R;
 
 public class MainActivity extends AppCompatActivity {
 

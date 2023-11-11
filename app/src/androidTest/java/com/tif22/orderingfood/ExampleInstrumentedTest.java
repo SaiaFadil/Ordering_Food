@@ -1,4 +1,4 @@
-package com.tif22.ordering_food;
+package com.tif22.orderingfood;
 
 import android.content.Context;
 
