@@ -6,4 +6,5 @@
     <color name="primary">#ff1c1c</color>
     <color name="secondary">#1f1f1f</color>
     <color name="Et_Bg_Color">#d9d9d9</color>
+    <color name="Et_Hint_Color">#696969</color>
 </resources>

@@ -1,147 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/secondary"
     android:background="@color/secondary"
+    android:backgroundTint="@color/secondary"
+    android:orientation="vertical"
     tools:context=".ui.activity.LoginActivity">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_minus10sdp"
         android:layout_height="wrap_content">
-        <TableRow
-            android:gravity="center_horizontal"
-            >
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FOOD "
-                    android:textSize="@dimen/_35ssp"
-                    android:shadowColor="@color/black"
-                    android:shadowRadius="10"
-                    android:shadowDy="20"
-                    android:shadowDx="0"
-                    android:fontFamily="@font/rowdiesregular"
-                    android:textColor="@color/primary"
-                    />
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ORDER"
-                    android:textSize="@dimen/_35ssp"
-                    android:shadowColor="@color/black"
-                    android:shadowRadius="10"
-                    android:shadowDy="20"
-                    android:shadowDx="0"
-                    android:fontFamily="@font/rowdiesregular"
-                    android:textColor="@color/white"
-                    />
-
-        </TableRow>
-    </TableLayout>
-
-
-        <HorizontalScrollView
-            android:id="@+id/ScrollHorizontal"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_140sdp"
-            android:scrollbars="none"
-            android:layout_marginTop="@dimen/_20sdp"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <!-- Gambar pertama -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="@dimen/_250sdp"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/makanan1"
-                        android:scaleType="fitXY"/>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Gambar kedua -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="@dimen/_250sdp"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/makanan5"
-                        android:scaleType="fitXY"/>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Gambar ketiga -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="@dimen/_250sdp"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/makanan2"
-                        android:scaleType="fitXY"/>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-        </HorizontalScrollView>
-
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            app:cardCornerRadius="@dimen/_10sdp"-->
-<!--            app:strokeColor="@color/secondary"-->
-<!--            android:layout_marginLeft="@dimen/_minus10sdp"-->
-<!--            android:layout_marginRight="@dimen/_minus10sdp"-->
-<!--            android:layout_marginTop="@dimen/_20sdp"-->
-<!--            android:layout_height="@dimen/_130sdp">-->
-<!--            <androidx.viewpager.widget.ViewPager-->
-<!--                android:id="@+id/GambarLogin"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"/>-->
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masuk ke akun Anda"
-            android:textSize="@dimen/_22ssp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/robotobold"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
-            />
-<!--        <com.google.android.material.textview.MaterialTextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Email"-->
-<!--            android:textSize="@dimen/_22ssp"-->
-<!--            android:fontFamily="@font/robotobold"-->
-<!--            android:layout_gravity="left"-->
-<!--            android:layout_marginLeft="@dimen/_20sdp"-->
-<!--            android:layout_marginTop="@dimen/_10sdp"-->
-<!--            android:textColor="@color/white"-->
-<!--            />-->
-    </LinearLayout>
-</ScrollView>
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_minus10sdp">
+
+                <TableRow android:gravity="center_horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rowdiesregular"
+                        android:shadowColor="@color/black"
+                        android:shadowDx="0"
+                        android:shadowDy="20"
+                        android:shadowRadius="10"
+                        android:text="FOOD "
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/_40ssp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rowdiesregular"
+                        android:shadowColor="@color/black"
+                        android:shadowDx="0"
+                        android:shadowDy="20"
+                        android:shadowRadius="10"
+                        android:text="ORDER"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_40ssp" />
+
+                </TableRow>
+            </TableLayout>
+
+
+            <HorizontalScrollView
+                android:id="@+id/ScrollHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_140sdp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <!-- Gambar pertama -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/makanan1" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Gambar kedua -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/makanan5" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Gambar ketiga -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/makanan2" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Masuk ke akun Anda"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_22ssp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_22ssp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Et_Bg_Color"
+                    android:backgroundTint="@color/Et_Bg_Color"
+                    android:fontFamily="@font/robotoregular"
+                    android:hint="Masukkan Email Anda"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Et_Hint_Color" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Kata Sandi"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_22ssp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Et_Bg_Color"
+                    android:backgroundTint="@color/Et_Bg_Color"
+                    android:fontFamily="@font/robotoregular"
+                    android:hint="Masukkan Kata Sandi Anda"
+                    android:inputType="textVisiblePassword"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Et_Hint_Color" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Lupa Kata Sandi"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:backgroundTint="@color/primary"
+                android:fontFamily="@font/poppinssemibold"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23ssp"
+                app:cornerRadius="@dimen/_10sdp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_minus10sdp"
+                android:layout_marginBottom="@dimen/_minus10sdp">
+
+                <TableRow android:gravity="center_horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/robotobold"
+                        android:text="Belum Punya Akun?"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/robotobold"
+                        android:text=" Daftar Disini"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/_16ssp" />
+
+
+                </TableRow>
+            </TableLayout>
+
+            <Button
+                android:id="@+id/logingoogle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:drawableLeft="@drawable/logogoogle"
+                android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_30sdp"
+                android:shadowRadius="3"
+                android:text="Masuk Dengan Akun Google"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:backgroundTint="@color/white"
+                app:cornerRadius="@dimen/_10sdp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="@dimen/_1sdp" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

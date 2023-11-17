@@ -10,11 +10,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    const val BASE_URL: String = "http://172.17.201.43/OrderingFood/FilePhp/" // local server
+    const val BASE_URL: String = "http://192.168.1.13/OrderingFood/FilePhp/" // local server
 
-    /**
-     * connect to rest server
-     */
     val connection: Retrofit
         get() {
             val gson = GsonBuilder().setLenient().create()
