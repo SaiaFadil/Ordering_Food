@@ -48,9 +48,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var showAnim: Animation
     private lateinit var progressDialog: ProgressDialog
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+    private fun initComponent(){
         //deklarasi id komponen
         scrollHorizontal = findViewById(R.id.ScrollHorizontal)
         et_email = findViewById(R.id.et_email)
@@ -65,6 +63,15 @@ class LoginActivity : AppCompatActivity() {
         btn_lupasandi = findViewById(R.id.btn_lupasandi)
         tabelregistrasi = findViewById(R.id.tabelregistrasi)
         logingoogle = findViewById(R.id.logingoogle)
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+        initComponent()
+
+        //Deklarasi Animasi
         showAnim = AnimationUtils.loadAnimation(this, R.anim.show)
 
         //Deklarasi Progress Dialog (Loading)

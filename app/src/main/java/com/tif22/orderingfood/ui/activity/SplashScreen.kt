@@ -13,13 +13,21 @@ import android.widget.TableLayout
 import com.tif22.orderingfood.R
 
 class SplashScreen : AppCompatActivity() {
+
+    private lateinit var tabeljudul: TableLayout
+    private lateinit var motor: ImageView
+    private fun initComponent() {
+        //Deklarasi id komponen
+        tabeljudul = findViewById(R.id.tabeljudul)
+        motor = findViewById(R.id.motor)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
+        initComponent()
 
-        //Deklarasi id komponen
-        val tabeljudul: TableLayout = findViewById(R.id.tabeljudul)
-        val motor: ImageView = findViewById(R.id.motor)
 
         //Deklarasi animasi
         val fade_in_image: Animation = AnimationUtils.loadAnimation(this, R.anim.fade_in_image)
@@ -35,7 +43,7 @@ class SplashScreen : AppCompatActivity() {
         motor.startAnimation(fade_in_image)
 
         //Menjalankan Animasi Kedua
-        val handlerKomponen= Handler()
+        val handlerKomponen = Handler()
         handlerKomponen.postDelayed({
             motor.startAnimation(fade_out_image)
             tabeljudul.startAnimation(fade_out_teks)
@@ -44,7 +52,7 @@ class SplashScreen : AppCompatActivity() {
         }, 2000)
 
         //Menghilangkan Gambar Motor
-        val handlerHilang= Handler()
+        val handlerHilang = Handler()
         handlerHilang.postDelayed({
             motor.visibility = View.INVISIBLE
             handlerHilang.postDelayed({
@@ -54,15 +62,13 @@ class SplashScreen : AppCompatActivity() {
         //Melanjutkan ke Halaman Login Setelah 3 detik
         val handler = Handler()
         handler.postDelayed({
-                // Start the LoginActivity using an Intent
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
-                finish()
+            // Start the LoginActivity using an Intent
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
+            finish()
         }, 3000)
     }//akhir onCreate
-
-
 
 
 }
