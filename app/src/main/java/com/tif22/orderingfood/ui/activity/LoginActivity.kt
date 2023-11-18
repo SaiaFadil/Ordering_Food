@@ -125,8 +125,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun MulaiAnimasi() {
-//        et_email.startAnimation(showAnim)
-//        et_password.startAnimation(showAnim)
         btn_login.startAnimation(showAnim)
         btn_lupasandi.startAnimation(showAnim)
         logingoogle.startAnimation(showAnim)
