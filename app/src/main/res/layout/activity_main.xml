@@ -5,18 +5,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/secondary"
+    android:gravity="center"
     android:padding="@dimen/_20sdp"
     tools:context=".ui.activity.MainActivity">
 
 
 
+
+    <ImageView
+        android:id="@+id/motor"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_gravity="center"
+        android:src="@drawable/gambarorang"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blm Ada Apa Apa:v"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="@dimen/_25ssp"
+        android:fontFamily="@font/rowdiesregular"/>
 
 </LinearLayout>

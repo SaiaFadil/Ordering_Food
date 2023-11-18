@@ -1,5 +1,6 @@
 package com.tif22.orderingfood.ui.activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,11 +46,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tabelregistrasi: TableLayout
     private lateinit var logingoogle: Button
     private lateinit var showAnim: Animation
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         //deklarasi id komponen
         scrollHorizontal = findViewById(R.id.ScrollHorizontal)
         et_email = findViewById(R.id.et_email)
@@ -66,17 +67,21 @@ class LoginActivity : AppCompatActivity() {
         logingoogle = findViewById(R.id.logingoogle)
         showAnim = AnimationUtils.loadAnimation(this, R.anim.show)
 
+        //Deklarasi Progress Dialog (Loading)
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Loading...")
+        progressDialog.setMessage("Harap Tunggu")
+        progressDialog.setCancelable(false)
+        progressDialog.setIcon(R.drawable.logoaplikasi)
+
         //Mulai Animasi
         MulaiAnimasi()
-
 
         //Fungsi Tambahan
         ShowCenterImage()
 
         //buton login
-        btn_login.setOnClickListener(View.OnClickListener {
-            GetLogin()
-        })
+        btn_login.setOnClickListener(View.OnClickListener {  GetLogin() })
 
 
     }//Akhir onCreate
@@ -93,23 +98,27 @@ class LoginActivity : AppCompatActivity() {
             et_password.setError("Password Harus Diisi!")
             et_password.requestFocus()
         } else {
+            progressDialog.show()
             val retrofitEndPoint: RetrofitEndPoint = RetrofitClient.connection.create()
             var call: Call<UsersResponse> = retrofitEndPoint.login(email, password)
             call.enqueue(object : Callback<UsersResponse> {
                 override fun onResponse(
-                    call: Call<UsersResponse>,
-                    response: Response<UsersResponse>
+                    call: Call<UsersResponse>, response: Response<UsersResponse>
                 ) {
                     if (response.body() != null && response.isSuccessful) {
+                        progressDialog.dismiss()
                         Log.v("retrofit", "call success")
                         val intent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(intent)
+                        overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
                     } else {
+                        progressDialog.dismiss()
                         response.body().toString()
                     }
                 }
 
                 override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
+                    progressDialog.dismiss()
                     Log.v("retrofit", "call failed")
                 }
             })

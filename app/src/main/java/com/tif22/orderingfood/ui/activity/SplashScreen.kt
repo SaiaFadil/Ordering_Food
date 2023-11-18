@@ -30,12 +30,9 @@ class SplashScreen : AppCompatActivity() {
         //Menampilkan Gambar
         motor.visibility = View.VISIBLE
 
-
         //Menjalankan Animasi Pertama
         tabeljudul.startAnimation(fade_in_teks)
         motor.startAnimation(fade_in_image)
-
-
 
         //Menjalankan Animasi Kedua
         val handlerKomponen= Handler()
@@ -60,7 +57,7 @@ class SplashScreen : AppCompatActivity() {
                 // Start the LoginActivity using an Intent
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
-                overridePendingTransition(R.anim.layout_in, R.anim.layout_out);
+                overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
                 finish()
         }, 3000)
     }//akhir onCreate
