@@ -7,7 +7,7 @@ class EmailSender { private $smtpHost = 'smtp.gmail.com';
     private $smtpPassword = 'ztpg omce squr bfli';
     private $smtpPort = 587;
     private $fromEmail = 'akunceer1satu@gmail.com';
-    private $fromName = 'ORDERING FOOD '.'👨‍🍳';  
+    private $fromName = 'ORDERING FOOD ';  
 
     public function generateOTP($length = 6) {
         $otp = '';
