@@ -60,10 +60,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/robotobold"
+                android:fontFamily="@font/rowdiesregular"
                 android:text="Daftarkan Akun Anda"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_25ssp" />
+                android:textSize="@dimen/_23ssp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/teksnama"

@@ -3,6 +3,7 @@ package com.tif22.orderingfood.ui.activity
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -167,9 +168,15 @@ class KodeOtpRegister : AppCompatActivity() {
             }
         })
     }
+
+    public override fun onResume() {
+        super.onResume()
+        MulaiGif()
+    }
     private fun MulaiGif(){
+
         val imageView = findViewById<ImageView>(R.id.gambaranimasi)
-        val url = "https://media.giphy.com/media/fKAwpFssEBdpbKPBKa/giphy.gif"
+        val url = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHVkcXIwM3F4aWVpNzJianpnOGNnc2p1dXRpZmxib2NuNjgxdDkwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fKAwpFssEBdpbKPBKa/giphy.gif"
 
         Glide.with(this)
             .asGif()
