@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:backgroundTint="@color/secondary"
+    android:background="@color/secondary"
+    tools:context=".ui.activity.KodeOtpRegister">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tulisan1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="KODE OTP"
+                android:fontFamily="@font/robotobold"
+                android:textSize="@dimen/_22ssp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                />
+
+
+            <TextView
+                android:id="@+id/tulisan2"
+                android:fontFamily="@font/robotobold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Silahkan masukkan kode otp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_17ssp"
+                android:textAlignment="center"/>
+            <ImageView
+                android:id="@+id/gambaranimasi"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/_20sdp"
+                android:layout_height="@dimen/_180sdp"
+                android:src="@drawable/gambarorang"
+                />
+            <TextView
+                android:id="@+id/tulisansalah"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kode OTP Salah!!"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                android:fontFamily="@font/robotobold"/>
+            <!-- Kolom untuk kode OTP -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingRight="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_10sdp">
+
+                <in.aabhasjindal.otptextview.OtpTextView
+                    android:id="@+id/kode_otp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    app:height="@dimen/_35sdp"
+                    app:width="@dimen/_35sdp"
+                    app:bar_enabled="true"
+                    android:layout_gravity="center_horizontal"
+                    app:bar_height="@dimen/_2sdp"
+                    app:length="6"
+                    app:otp_text_size="@dimen/_14sdp"/>
+
+            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_konfirmasiotpp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:text="Konfirmasi"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_52sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:shadowRadius="3"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:backgroundTint="@color/primary"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

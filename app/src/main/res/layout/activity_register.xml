@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondary"
+    android:backgroundTint="@color/secondary"
+    android:orientation="vertical"
+    tools:context=".ui.activity.RegisterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_minus10sdp">
+
+                <TableRow android:gravity="center_horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rowdiesregular"
+                        android:shadowColor="@color/black"
+                        android:shadowDx="0"
+                        android:shadowDy="20"
+                        android:shadowRadius="10"
+                        android:text="FOOD "
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/_40ssp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rowdiesregular"
+                        android:shadowColor="@color/black"
+                        android:shadowDx="0"
+                        android:shadowDy="20"
+                        android:shadowRadius="10"
+                        android:text="ORDER"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_40ssp" />
+
+                </TableRow>
+            </TableLayout>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tulisantambahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Daftarkan Akun Anda"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_25ssp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/teksnama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Nama"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_et_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <EditText
+                    android:id="@+id/et_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Et_Bg_Color"
+                    android:backgroundTint="@color/Et_Bg_Color"
+                    android:fontFamily="@font/robotoregular"
+                    android:hint="Masukkan Nama Anda"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Et_Hint_Color" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/teksnotelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="No. Telepon"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_et_notelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <EditText
+                    android:id="@+id/et_notelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Et_Bg_Color"
+                    android:backgroundTint="@color/Et_Bg_Color"
+                    android:fontFamily="@font/robotoregular"
+                    android:hint="Masukkan No. Telepon Anda"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Et_Hint_Color" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/teksemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_5sdp">
+
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Et_Bg_Color"
+                    android:backgroundTint="@color/Et_Bg_Color"
+                    android:fontFamily="@font/robotoregular"
+                    android:hint="Masukkan Email Anda"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/Et_Hint_Color" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tekspassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Kata Sandi"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:backgroundTint="@color/Et_Bg_Color"
+                app:cardCornerRadius="@dimen/_5sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_50sdp"
+                        android:background="@color/Et_Bg_Color"
+                        android:backgroundTint="@color/Et_Bg_Color"
+                        android:fontFamily="@font/robotoregular"
+                        android:hint="Masukkan Kata Sandi Anda"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/Et_Hint_Color" />
+                    <ImageView
+                        android:backgroundTint="@color/Et_Bg_Color"
+                        android:id="@+id/img_lihatpassword"
+                        android:layout_marginLeft="@dimen/_minus40sdp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/eye_close"
+                        android:scaleType="fitXY"/>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tekskonfpassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:fontFamily="@font/robotobold"
+                android:text="Konfirmasi Kata Sandi"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_et_konfpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:backgroundTint="@color/Et_Bg_Color"
+                app:cardCornerRadius="@dimen/_5sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/et_konfpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_50sdp"
+                        android:background="@color/Et_Bg_Color"
+                        android:backgroundTint="@color/Et_Bg_Color"
+                        android:fontFamily="@font/robotoregular"
+                        android:hint="Konfirmasi Kata Sandi Anda"
+                        android:inputType="textPassword"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/Et_Hint_Color" />
+                    <ImageView
+                        android:backgroundTint="@color/Et_Bg_Color"
+                        android:id="@+id/img_lihatkonfpassword"
+                        android:layout_marginLeft="@dimen/_minus40sdp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/eye_close"
+                        android:scaleType="fitXY"/>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_registrasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:backgroundTint="@color/primary"
+                android:fontFamily="@font/poppinssemibold"
+                android:text="Daftar"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23ssp"
+                app:cornerRadius="@dimen/_10sdp" />
+
+            <TableLayout
+                android:id="@+id/tabelregistrasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_20sdp">
+
+                <TableRow
+                    android:gravity="center_horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/robotobold"
+                        android:text="Sudah Punya Akun?"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/robotobold"
+                        android:text="  Masuk Disini"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/_16ssp"
+                        android:layout_marginBottom="@dimen/_20sdp"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

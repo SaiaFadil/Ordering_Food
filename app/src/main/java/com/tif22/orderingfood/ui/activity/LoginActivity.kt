@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
@@ -12,14 +13,11 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.HorizontalScrollView
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.viewpager.widget.ViewPager
 import com.google.android.material.card.MaterialCardView
 import com.tif22.orderingfood.R
 import com.tif22.orderingfood.api.retrofit.RetrofitClient
@@ -42,28 +40,13 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tulisantambahan: TextView
     private lateinit var teksemail: TextView
     private lateinit var tekspassword: TextView
+    private lateinit var tv_register: TextView
     private lateinit var btn_lupasandi: TextView
     private lateinit var tabelregistrasi: TableLayout
     private lateinit var logingoogle: Button
-    private lateinit var showAnim: Animation
+    private lateinit var showAnimin: Animation
+    private lateinit var showAnimout: Animation
     private lateinit var progressDialog: ProgressDialog
-
-    private fun initComponent(){
-        //deklarasi id komponen
-        scrollHorizontal = findViewById(R.id.ScrollHorizontal)
-        et_email = findViewById(R.id.et_email)
-        et_password = findViewById(R.id.et_password)
-        card_et_email = findViewById(R.id.card_et_email)
-        card_et_password = findViewById(R.id.card_et_password)
-        btn_login = findViewById(R.id.btn_login)
-        layoutPager = findViewById(R.id.layoutPager)
-        tulisantambahan = findViewById(R.id.tulisantambahan)
-        teksemail = findViewById(R.id.teksemail)
-        tekspassword = findViewById(R.id.tekspassword)
-        btn_lupasandi = findViewById(R.id.btn_lupasandi)
-        tabelregistrasi = findViewById(R.id.tabelregistrasi)
-        logingoogle = findViewById(R.id.logingoogle)
-    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +55,8 @@ class LoginActivity : AppCompatActivity() {
         initComponent()
 
         //Deklarasi Animasi
-        showAnim = AnimationUtils.loadAnimation(this, R.anim.show)
+        showAnimin = AnimationUtils.loadAnimation(this, R.anim.show_in)
+        showAnimout = AnimationUtils.loadAnimation(this, R.anim.show_out)
 
         //Deklarasi Progress Dialog (Loading)
         progressDialog = ProgressDialog(this)
@@ -86,10 +70,18 @@ class LoginActivity : AppCompatActivity() {
 
         //Fungsi Tambahan
         ShowCenterImage()
+        LihatPassword()
 
         //buton login
-        btn_login.setOnClickListener(View.OnClickListener {  GetLogin() })
+        btn_login.setOnClickListener({ GetLogin() })
 
+        //Pindah ke Register
+        tv_register.setOnClickListener {
+            val intent = Intent(applicationContext, RegisterActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
+            MulaiAnimasiKeluar()
+        }
 
     }//Akhir onCreate
 
@@ -104,6 +96,9 @@ class LoginActivity : AppCompatActivity() {
         } else if (TextUtils.isEmpty(password)) {
             et_password.setError("Password Harus Diisi!")
             et_password.requestFocus()
+        } else if (!email.endsWith(".com") && !email.contains("@")) {
+            et_email.setError("Email Tidak Valid!")
+            et_email.requestFocus()
         } else {
             progressDialog.show()
             val retrofitEndPoint: RetrofitEndPoint = RetrofitClient.connection.create()
@@ -132,6 +127,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     //memulai animasi
     private fun ShowCenterImage() {
         // Menggeser ke posisi tengah item
@@ -140,22 +136,86 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun LihatPassword() {
+        // Inisialisasi variabel boolean untuk melacak status password terlihat atau tidak
+        var isPasswordVisible = false
+
+        // Mendapatkan referensi ke ImageButton
+        val imgLihatPassword = findViewById<ImageView>(R.id.img_lihatpassword)
+
+        // Mendefinisikan fungsi onClick untuk ImageButton
+        imgLihatPassword.setOnClickListener {
+            // Mengubah status password terlihat atau tidak
+            isPasswordVisible = !isPasswordVisible
+
+            // Memperlihatkan atau menyembunyikan password berdasarkan status terlihat atau tidak
+            if (isPasswordVisible) {
+                // Jika password hendak ditampilkan
+                et_password.transformationMethod =
+                    null // Menghapus transformasi untuk menampilkan password
+                imgLihatPassword.setImageResource(R.drawable.eye) // Mengubah ikon menjadi mata terlihat
+            } else {
+                // Jika password hendak disembunyikan
+                et_password.transformationMethod =
+                    PasswordTransformationMethod.getInstance() // Menggunakan transformasi untuk menyembunyikan password
+                imgLihatPassword.setImageResource(R.drawable.eye_close) // Mengubah ikon menjadi mata tidak terlihat
+            }
+
+            // Mengatur kursor ke posisi terakhir di EditText
+            et_password.setSelection(et_password.text.length)
+        }
+
+    }
+
     private fun MulaiAnimasi() {
-        btn_login.startAnimation(showAnim)
-        btn_lupasandi.startAnimation(showAnim)
-        logingoogle.startAnimation(showAnim)
-        layoutPager.startAnimation(showAnim)
-        tulisantambahan.startAnimation(showAnim)
-        teksemail.startAnimation(showAnim)
-        tekspassword.startAnimation(showAnim)
-        tabelregistrasi.startAnimation(showAnim)
-        card_et_email.startAnimation(showAnim)
-        card_et_password.startAnimation(showAnim)
+        btn_login.startAnimation(showAnimin)
+        btn_lupasandi.startAnimation(showAnimin)
+        logingoogle.startAnimation(showAnimin)
+        layoutPager.startAnimation(showAnimin)
+        tulisantambahan.startAnimation(showAnimin)
+        teksemail.startAnimation(showAnimin)
+        tekspassword.startAnimation(showAnimin)
+        tabelregistrasi.startAnimation(showAnimin)
+        card_et_email.startAnimation(showAnimin)
+        card_et_password.startAnimation(showAnimin)
+    }
+
+    private fun MulaiAnimasiKeluar() {
+        btn_login.startAnimation(showAnimout)
+        btn_lupasandi.startAnimation(showAnimout)
+        logingoogle.startAnimation(showAnimout)
+        layoutPager.startAnimation(showAnimout)
+        tulisantambahan.startAnimation(showAnimout)
+        teksemail.startAnimation(showAnimout)
+        tekspassword.startAnimation(showAnimout)
+        tabelregistrasi.startAnimation(showAnimout)
+        card_et_email.startAnimation(showAnimout)
+        card_et_password.startAnimation(showAnimout)
     }
 
 
+    private fun initComponent() {
+        //deklarasi id komponen
+        scrollHorizontal = findViewById(R.id.ScrollHorizontal)
+        et_email = findViewById(R.id.et_email)
+        et_password = findViewById(R.id.et_password)
+        card_et_email = findViewById(R.id.card_et_email)
+        card_et_password = findViewById(R.id.card_et_password)
+        tv_register = findViewById(R.id.tv_Register)
+        btn_login = findViewById(R.id.btn_login)
+        layoutPager = findViewById(R.id.layoutPager)
+        tulisantambahan = findViewById(R.id.tulisantambahan)
+        teksemail = findViewById(R.id.teksemail)
+        tekspassword = findViewById(R.id.tekspassword)
+        btn_lupasandi = findViewById(R.id.btn_lupasandi)
+        tabelregistrasi = findViewById(R.id.tabelregistrasi)
+        logingoogle = findViewById(R.id.logingoogle)
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
+        finish()
+        overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
 
     }
 }

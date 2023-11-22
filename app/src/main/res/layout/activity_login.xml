@@ -129,7 +129,7 @@
                 android:fontFamily="@font/robotobold"
                 android:text="Email"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_22ssp" />
+                android:textSize="@dimen/_18ssp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_et_email"
@@ -164,7 +164,7 @@
                 android:fontFamily="@font/robotobold"
                 android:text="Kata Sandi"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_22ssp" />
+                android:textSize="@dimen/_18ssp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_et_password"
@@ -174,20 +174,39 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:backgroundTint="@color/Et_Bg_Color"
                 app:cardCornerRadius="@dimen/_5sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
 
                 <EditText
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_50sdp"
                     android:background="@color/Et_Bg_Color"
                     android:backgroundTint="@color/Et_Bg_Color"
                     android:fontFamily="@font/robotoregular"
                     android:hint="Masukkan Kata Sandi Anda"
-                    android:inputType="textVisiblePassword"
+                    android:inputType="textPassword"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/Et_Hint_Color" />
+                    <ImageView
+                        android:backgroundTint="@color/Et_Bg_Color"
+                        android:id="@+id/img_lihatpassword"
+                        android:layout_marginLeft="@dimen/_minus40sdp"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/eye_close"
+                        android:scaleType="fitXY"/>
+                </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
@@ -235,6 +254,7 @@
                         android:textSize="@dimen/_16ssp" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_Register"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/robotobold"
