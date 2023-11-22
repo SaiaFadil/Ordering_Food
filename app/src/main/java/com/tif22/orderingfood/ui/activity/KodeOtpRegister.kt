@@ -10,8 +10,10 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.tif22.orderingfood.R
 import com.tif22.orderingfood.api.retrofit.RetrofitClient
 import com.tif22.orderingfood.api.retrofit.RetrofitEndPoint
@@ -45,6 +47,9 @@ class KodeOtpRegister : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kode_otp_register)
+
+        MulaiGif()
+
         konfir = findViewById(R.id.button_konfirmasiotpp)
         inputotp = findViewById(R.id.kode_otp)
         tulisansalah = findViewById(R.id.tulisansalah)
@@ -162,7 +167,15 @@ class KodeOtpRegister : AppCompatActivity() {
             }
         })
     }
+    private fun MulaiGif(){
+        val imageView = findViewById<ImageView>(R.id.gambaranimasi)
+        val url = "https://media.giphy.com/media/fKAwpFssEBdpbKPBKa/giphy.gif"
 
+        Glide.with(this)
+            .asGif()
+            .load(url)
+            .into(imageView)
+    }
     private fun updateButtonName() {
         val minutes = totalSeconds / 60
         konfir.text = if (totalSeconds > 59) {
