@@ -119,6 +119,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_22ssp" />
 
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/teksemail"
                 android:layout_width="wrap_content"
@@ -230,7 +231,7 @@
                 android:layout_marginRight="@dimen/_30sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:backgroundTint="@color/primary"
-                android:fontFamily="@font/poppinssemibold"
+                android:fontFamily="@font/rowdiesregular"
                 android:text="Login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_23ssp"
@@ -285,6 +286,7 @@
                 app:backgroundTint="@color/white"
                 app:cornerRadius="@dimen/_10sdp"
                 app:strokeColor="@color/black"
+                android:onClick="signInWithGoogle"
                 app:strokeWidth="@dimen/_1sdp" />
         </LinearLayout>
     </ScrollView>

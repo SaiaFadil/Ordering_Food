@@ -130,7 +130,7 @@
                     android:backgroundTint="@color/Et_Bg_Color"
                     android:fontFamily="@font/robotoregular"
                     android:hint="Masukkan No. Telepon Anda"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/Et_Hint_Color" />
@@ -290,7 +290,7 @@
                 android:layout_marginRight="@dimen/_30sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:backgroundTint="@color/primary"
-                android:fontFamily="@font/poppinssemibold"
+                android:fontFamily="@font/rowdiesregular"
                 android:text="Daftar"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_23ssp"

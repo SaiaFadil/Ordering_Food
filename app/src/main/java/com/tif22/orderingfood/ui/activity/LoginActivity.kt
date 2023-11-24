@@ -18,8 +18,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TextView
+import android.widget.Toast
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.tasks.Task
 import com.google.android.material.card.MaterialCardView
 import com.tif22.orderingfood.R
+import com.tif22.orderingfood.api.google.GoogleUsers
 import com.tif22.orderingfood.api.retrofit.RetrofitClient
 import com.tif22.orderingfood.api.retrofit.RetrofitEndPoint
 import com.tif22.orderingfood.data.response.UsersResponse
@@ -47,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var showAnimin: Animation
     private lateinit var showAnimout: Animation
     private lateinit var progressDialog: ProgressDialog
+    private lateinit var googleUsers: GoogleUsers
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,8 +90,33 @@ class LoginActivity : AppCompatActivity() {
             MulaiAnimasiKeluar()
         }
 
+        //Pindah ke Lupa Katasandi
+        btn_lupasandi.setOnClickListener{
+            val intent = Intent(applicationContext, EmailLupaSandi::class.java)
+            startActivity(intent)
+            finish()
+            overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
+        }
+
+        // Instantiate GoogleUsers
+        val googleUsers = GoogleUsers(this) // 'this' refers to the current activity or context
+
+// Set OnClickListener for logingoogle button
+        logingoogle.setOnClickListener {
+            // Execute the login function from the GoogleUsers class
+            val signInIntent = googleUsers.getIntent()
+            if (signInIntent != null) {
+                startActivityForResult(signInIntent, GoogleUsers.REQUEST_CODE)
+            } else {
+                Toast.makeText(this@LoginActivity, "Gagal", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
     }//Akhir onCreate
 
+
+    //Login Google
 
     //fungsi cek login
     fun GetLogin() {
@@ -107,13 +139,22 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(
                     call: Call<UsersResponse>, response: Response<UsersResponse>
                 ) {
-                    if (response.body() != null && response.isSuccessful) {
+                    if (response.body() != null && response.body()?.status.equals("admin")) {
                         progressDialog.dismiss()
-                        Log.v("retrofit", "call success")
+                        Log.v("retrofit", "call admin success")
                         val intent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(intent)
                         overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
-                    } else {
+                    } else if (response.body() != null && response.body()?.status.equals("user")) {
+                        progressDialog.dismiss()
+                        Log.v("retrofit", "call user success")
+                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        startActivity(intent)
+                        overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
+                    } else if (response.body() != null && response.body()?.status.equals("failed")){
+                        et_password.error = "Password Salah!"
+                        et_password.requestFocus()
+                        et_password.setText("")
                         progressDialog.dismiss()
                         response.body().toString()
                     }
@@ -211,6 +252,7 @@ class LoginActivity : AppCompatActivity() {
         tabelregistrasi = findViewById(R.id.tabelregistrasi)
         logingoogle = findViewById(R.id.logingoogle)
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()

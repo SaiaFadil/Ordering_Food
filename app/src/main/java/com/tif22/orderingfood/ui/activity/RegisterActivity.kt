@@ -84,10 +84,10 @@ class RegisterActivity : AppCompatActivity() {
         LihatPassword()
         LihatKonfirmasiPassword()
 
+
         //Kembali Ke Menu Login
         tv_login.setOnClickListener {
             val intent = Intent(applicationContext, LoginActivity::class.java)
-//            MulaiAnimasiKeluar()
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
@@ -158,6 +158,8 @@ class RegisterActivity : AppCompatActivity() {
             et_katasandi.setSelection(et_katasandi.text.length)
         }
     }
+
+
     private fun LihatKonfirmasiPassword() {
         var isPasswordVisible = false
         val imgLihatPassword = findViewById<ImageView>(R.id.img_lihatkonfpassword)
@@ -262,7 +264,6 @@ class RegisterActivity : AppCompatActivity() {
                             val builder = AlertDialog.Builder(this@RegisterActivity)
                             builder.setMessage("Email Sudah Pernah Digunakan!!")
                                 .setPositiveButton("OK") { dialog, _ ->
-                                    // Kode yang ingin dijalankan saat tombol OK ditekan
                                     dialog.dismiss()
                                 }
                             val dialog1 = builder.create()
@@ -324,7 +325,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(applicationContext, LoginActivity::class.java)
-//        MulaiAnimasiKeluar()
+        MulaiAnimasiKeluar()
         startActivity(intent)
         finish()
         overridePendingTransition(R.anim.layout_in, R.anim.layout_out)

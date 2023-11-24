@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    android:backgroundTint="@color/secondary"
+    android:background="@color/secondary"
+        android:padding="@dimen/_10sdp"
+        tools:context=".ui.activity.EmailLupaSandi">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tulisanatas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LUPA KATA SANDI"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:textSize="@dimen/_21ssp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/tulisanbawah"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Silahkan masukkan emailmu "
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_17ssp"
+                    android:textAlignment="center"/>
+                <ImageView
+                    android:id="@+id/gambaranimasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_180sdp"
+                    android:src="@drawable/gambarorang"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp">
+
+                    <EditText
+                        android:id="@+id/et_emailLupakatasandi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Et_Bg_Color"
+                        android:backgroundTint="@color/Et_Bg_Color"
+                        android:fontFamily="@font/robotoregular"
+                        android:hint="Masukkan Email Anda"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/Et_Hint_Color" />
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_lupakatasandi"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:text="Lanjut"
+                    app:cornerRadius="@dimen/_10sdp"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:textSize="@dimen/_17ssp"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:shadowRadius="3"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:backgroundTint="@color/primary"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>

@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.GantiPasswordLupa"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.EmailLupaSandi"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.KodeOtpRegister"
             android:exported="false" />
         <activity

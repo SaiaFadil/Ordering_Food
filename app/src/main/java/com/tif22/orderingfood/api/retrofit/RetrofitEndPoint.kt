@@ -18,6 +18,14 @@ interface RetrofitEndPoint {
     ) : retrofit2.Call<UsersResponse>
 
 
+    @FormUrlEncoded
+    @POST("account/GantiPassword.php")
+    fun updatePassword(
+        @Field("email") email : String,
+        @Field("password_baru") password_baru : String
+    ) : retrofit2.Call<ResponseWithoutData>
+
+
   @FormUrlEncoded
     @POST("account/Register.php")
     fun register(

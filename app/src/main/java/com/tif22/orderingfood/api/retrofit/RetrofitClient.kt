@@ -10,20 +10,18 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    const val BASE_URL: String = "http://172.17.201.68/OrderingFood/FilePhp/" // local server
+    const val BASE_URL: String = "http://172.16.110.123/OrderingFood/FilePhp/" // local server
 
     val connection: Retrofit
         get() {
             val gson = GsonBuilder().setLenient().create()
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
-
             val client: OkHttpClient = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .build()
-
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))

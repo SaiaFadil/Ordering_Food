@@ -3,8 +3,6 @@ package com.tif22.orderingfood.ui.activity
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
-import android.graphics.drawable.AnimationDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.tif22.orderingfood.R
 import com.tif22.orderingfood.api.retrofit.RetrofitClient
@@ -21,7 +20,6 @@ import com.tif22.orderingfood.api.retrofit.RetrofitEndPoint
 import com.tif22.orderingfood.data.model.VerifyUtil
 import com.tif22.orderingfood.data.response.ResponseResetOtp
 import com.tif22.orderingfood.data.response.ResponseWithoutData
-import com.tif22.orderingfood.data.response.UsersResponse
 import com.tif22.orderingfood.data.response.VerifyResponse
 import `in`.aabhasjindal.otptextview.OTPListener
 import `in`.aabhasjindal.otptextview.OtpTextView
@@ -29,6 +27,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
+
 
 class KodeOtpRegister : AppCompatActivity() {
     private lateinit var konfir: Button
@@ -66,6 +65,8 @@ class KodeOtpRegister : AppCompatActivity() {
         nama_lengkap = intent.getStringExtra("nama_lengkap") ?: ""
         no_telpon = intent.getStringExtra("no_telpon") ?: ""
         password = intent.getStringExtra("password") ?: ""
+        Toast.makeText(this@KodeOtpRegister, "email = "+email, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@KodeOtpRegister, "nama = "+nama_lengkap, Toast.LENGTH_SHORT).show()
 
         Log.e("OTP ", otp.toString())
 
@@ -81,55 +82,71 @@ class KodeOtpRegister : AppCompatActivity() {
             progressDialog.show()
             totalSeconds = 0
             val retrofitEndPoint: RetrofitEndPoint = RetrofitClient.connection.create(RetrofitEndPoint::class.java)
-            var call: Call<VerifyResponse> =
-                retrofitEndPoint.mail(email, "SignUp", "update", "1")
-                    call.enqueue(object : Callback<VerifyResponse> {
-                override fun onResponse(
-                    call: Call<VerifyResponse>,response: Response<VerifyResponse>
-                ) {
-                    Handler().postDelayed({
-                        progressDialog.dismiss()
-                        if (response.body() != null && response.body()?.status.equals("success")) {
-                            Toast.makeText(this@KodeOtpRegister, "OTP Terkirim", Toast.LENGTH_SHORT).show()
-                            konfir.isEnabled = false
-                            totalSeconds += 60
+
+
+                var call: Call<VerifyResponse> =
+                    retrofitEndPoint.mail(email, "SignUp", "update", "1")
+                call.enqueue(object : Callback<VerifyResponse> {
+                    override fun onResponse(
+                        call: Call<VerifyResponse>, response: Response<VerifyResponse>
+                    ) {
+                        Handler().postDelayed({
+                            progressDialog.dismiss()
+                            if (response.body() != null && response.body()?.status.equals("success")) {
+                                Toast.makeText(
+                                    this@KodeOtpRegister,
+                                    "OTP Terkirim",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                konfir.isEnabled = false
+                                totalSeconds += 60
 //
-                            val retrofitEndPoint: RetrofitEndPoint = RetrofitClient.connection.create(RetrofitEndPoint::class.java)
-                            var call: Call<ResponseResetOtp> =
-                                retrofitEndPoint.ResetOtp(email)
-                            call.enqueue(object :Callback<ResponseResetOtp>{
-                                override fun onResponse(
-                                    call: Call<ResponseResetOtp>,
-                                    response: Response<ResponseResetOtp>
-                                ) {
-                                    if (response.isSuccessful){
-                                        this@KodeOtpRegister.otp = response.body()?.otp.toString()
-                                        util.setOtp(response.body()?.otp.toString())
-                                    }else{
-                                        Toast.makeText(this@KodeOtpRegister, "gagal ", Toast.LENGTH_SHORT).show()
+                                val retrofitEndPoint: RetrofitEndPoint =
+                                    RetrofitClient.connection.create(RetrofitEndPoint::class.java)
+                                var call: Call<ResponseResetOtp> =
+                                    retrofitEndPoint.ResetOtp(email)
+                                call.enqueue(object : Callback<ResponseResetOtp> {
+                                    override fun onResponse(
+                                        call: Call<ResponseResetOtp>,
+                                        response: Response<ResponseResetOtp>
+                                    ) {
+                                        if (response.isSuccessful) {
+                                            this@KodeOtpRegister.otp =
+                                                response.body()?.otp.toString()
+                                            util.setOtp(response.body()?.otp.toString())
+                                        } else {
+                                            Toast.makeText(
+                                                this@KodeOtpRegister,
+                                                "gagal ",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
                                     }
-                                }
 
-                                override fun onFailure(call: Call<ResponseResetOtp>, t: Throwable) {
+                                    override fun onFailure(
+                                        call: Call<ResponseResetOtp>,
+                                        t: Throwable
+                                    ) {
 
-                                }
-                            })
+                                    }
+                                })
+                            } else {
+                                Toast.makeText(
+                                    this@KodeOtpRegister,
+                                    response.body()?.message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }, 2000)
+                    }
+                    override fun onFailure(call: Call<VerifyResponse>, t: Throwable) {
+                        Toast.makeText(this@KodeOtpRegister, t.message, Toast.LENGTH_SHORT).show()
+                        t.printStackTrace()
+                        progressDialog.dismiss()
+                    }
+                })
 
-
-                        } else {
-                            Toast.makeText(this@KodeOtpRegister, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        }
-                    }, 2000)
-                }
-
-                override fun onFailure(call: Call<VerifyResponse>, t: Throwable) {
-                    Toast.makeText(this@KodeOtpRegister, t.message, Toast.LENGTH_SHORT).show()
-                    t.printStackTrace()
-                    progressDialog.dismiss()
-                }
-            })
         }
-
         inputotp.setOtpListener(object : OTPListener {
             override fun onInteractionListener() {
                 // Implementasi sesuai kebutuhan
@@ -140,6 +157,21 @@ class KodeOtpRegister : AppCompatActivity() {
                 Log.e("OTP THIS ", this@KodeOtpRegister.otp)
                 Log.e("OTP UTIL ", util.getOtp())
                 if (this@KodeOtpRegister.otp == inputotp.getOTP()) {
+
+
+                    if (nama_lengkap.isEmpty()||no_telpon.isEmpty()||password.isEmpty()) {
+                        val pindah = Intent(this@KodeOtpRegister, GantiPasswordLupa::class.java)
+                        Toast.makeText(
+                            this@KodeOtpRegister,
+                            "anda melupakan sandi",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        pindah.putExtra("email", email)
+                        startActivity(pindah)
+                        overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
+                        finish()
+                        email = ""
+                    }else{
                     val retrofitEndPoint: RetrofitEndPoint = RetrofitClient.connection.create()
                     val call: Call<ResponseWithoutData>
                     = retrofitEndPoint.register(nama_lengkap, no_telpon, email, password)
@@ -149,10 +181,16 @@ class KodeOtpRegister : AppCompatActivity() {
                             response: Response<ResponseWithoutData>
                         ) {
                             if (response.isSuccessful) {
+
                                 val pindah = Intent(this@KodeOtpRegister, LoginActivity::class.java)
                                 pindah.putExtra("email", email)
                                 startActivity(pindah)
                                 overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
+                                nama_lengkap = ""
+                                no_telpon = ""
+                                password = ""
+                                email = ""
+                                this@KodeOtpRegister.otp = ""
                             } else {
                                 Toast.makeText(this@KodeOtpRegister, "Registrasi Gagal"+response.body()?.message, Toast.LENGTH_SHORT).show()
                             }
@@ -162,7 +200,8 @@ class KodeOtpRegister : AppCompatActivity() {
                             Toast.makeText(this@KodeOtpRegister, t.message, Toast.LENGTH_SHORT).show()
                         }
                     })
-                } else {
+                }
+                }else {
                     tulisansalah.visibility = View.VISIBLE
                 }
             }
@@ -209,9 +248,12 @@ class KodeOtpRegister : AppCompatActivity() {
         }
         handler.post(runnable)
     }
+
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
         overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
     }
+
 }
+
