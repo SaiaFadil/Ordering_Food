@@ -162,6 +162,7 @@ class LoginActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
                     progressDialog.dismiss()
+                    t.printStackTrace()
                     Log.v("retrofit", "call failed")
                 }
             })

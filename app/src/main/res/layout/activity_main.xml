@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/secondary"
-    android:gravity="center"
-    android:padding="@dimen/_20sdp"
+    android:gravity="center_horizontal"
+    android:id="@+id/body_container"
     tools:context=".ui.activity.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/secondary"
+        android:background="@color/secondary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"/>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_58sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:menu="@menu/nav_menu"
+        android:background="@color/secondary"
+        android:backgroundTint="@color/secondary"
+        app:itemActiveIndicatorStyle="@color/graydark"
+        android:outlineSpotShadowColor="@color/white"
+        android:outlineAmbientShadowColor="@color/white"
+        app:labelVisibilityMode="selected"
+        app:itemTextColor="@color/bottom_nav_text_color_selector"
+        app:itemIconTint="@color/bottom_nav_icon_color_selector"
+        android:id="@+id/bottomNav"
+        app:itemPaddingTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        app:compatShadowEnabled="true"
+        />
 
-
-    <ImageView
-        android:id="@+id/motor"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_200sdp"
-        android:layout_gravity="center"
-        android:src="@drawable/gambarorang"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Blm Ada Apa Apa:v"
-        android:textColor="@color/white"
-        android:textAllCaps="true"
-        android:textSize="@dimen/_25ssp"
-        android:fontFamily="@font/rowdiesregular"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
