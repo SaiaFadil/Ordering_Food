@@ -11,4 +11,5 @@
     <color name="Et_Bg_Color">#d9d9d9</color>
     <color name="Et_Hint_Color">#696969</color>
     <color name="card_bg_color">#0B0B0B</color>
+    <color name="card_cari_bg_color">#313131</color>
 </resources>

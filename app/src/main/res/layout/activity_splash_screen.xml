@@ -9,6 +9,8 @@
         android:id="@+id/tabeljudul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_minus10sdp">
 
@@ -24,7 +26,7 @@
                 android:shadowRadius="10"
                 android:text="FOOD "
                 android:textColor="@color/primary"
-                android:textSize="@dimen/_40ssp" />
+                android:textSize="@dimen/_35ssp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -36,7 +38,7 @@
                 android:shadowRadius="10"
                 android:text="ORDER"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_40ssp" />
+                android:textSize="@dimen/_35ssp" />
 
         </TableRow>
     </TableLayout>

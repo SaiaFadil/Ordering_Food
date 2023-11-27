@@ -1,5 +1,6 @@
 package com.tif22.orderingfood.api.retrofit
 
+import com.tif22.orderingfood.data.response.ResponseMenuHome
 import com.tif22.orderingfood.data.response.ResponseResetOtp
 import com.tif22.orderingfood.data.response.ResponseWithoutData
 import com.tif22.orderingfood.data.response.UsersResponse
@@ -59,6 +60,11 @@ interface RetrofitEndPoint {
         @Field("id_user") id_user : String
     ) : retrofit2.Call<VerifyResponse>
 
+    @FormUrlEncoded
+    @POST("home/Tampil_menu_beranda.php")
+    fun MenuHome(
+        @Field("kategori") kategori : String
+    ) : retrofit2.Call<ResponseMenuHome>
 
 
 }

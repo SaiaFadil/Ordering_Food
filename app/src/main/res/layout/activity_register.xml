@@ -22,6 +22,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_minus10sdp">
 
                 <TableRow android:gravity="center_horizontal">
@@ -36,7 +38,7 @@
                         android:shadowRadius="10"
                         android:text="FOOD "
                         android:textColor="@color/primary"
-                        android:textSize="@dimen/_40ssp" />
+                        android:textSize="@dimen/_35ssp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
@@ -48,7 +50,7 @@
                         android:shadowRadius="10"
                         android:text="ORDER"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_40ssp" />
+                        android:textSize="@dimen/_35ssp" />
 
                 </TableRow>
             </TableLayout>
@@ -63,7 +65,7 @@
                 android:fontFamily="@font/rowdiesregular"
                 android:text="Daftarkan Akun Anda"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_23ssp" />
+                android:textSize="@dimen/_15ssp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/teksnama"
@@ -293,7 +295,7 @@
                 android:fontFamily="@font/rowdiesregular"
                 android:text="Daftar"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_23ssp"
+                android:textSize="@dimen/_15ssp"
                 app:cornerRadius="@dimen/_10sdp" />
 
             <TableLayout
@@ -311,7 +313,7 @@
                         android:fontFamily="@font/robotobold"
                         android:text="Sudah Punya Akun?"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_login"
@@ -320,7 +322,7 @@
                         android:fontFamily="@font/robotobold"
                         android:text="  Masuk Disini"
                         android:textColor="@color/primary"
-                        android:textSize="@dimen/_16ssp"
+                        android:textSize="@dimen/_14ssp"
                         android:layout_marginBottom="@dimen/_20sdp"/>
                 </TableRow>
             </TableLayout>

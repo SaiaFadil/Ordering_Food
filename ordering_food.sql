@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Nov 2023 pada 05.57
+-- Waktu pembuatan: 27 Nov 2023 pada 22.56
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -28,19 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `detail_menu` (
+  `id_detail_menu` int(11) NOT NULL,
   `id_restoran` int(11) DEFAULT NULL,
   `id_menu` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `detail_menu`
---
-
-INSERT INTO `detail_menu` (`id_restoran`, `id_menu`) VALUES
-(16, 5),
-(16, 6),
-(17, 6),
-(18, 7);
 
 -- --------------------------------------------------------
 
@@ -50,19 +41,19 @@ INSERT INTO `detail_menu` (`id_restoran`, `id_menu`) VALUES
 
 CREATE TABLE `menu` (
   `id_menu` int(11) NOT NULL,
+  `id_restoran` int(11) NOT NULL,
+  `kategori` enum('makanan','minuman','snack','lainnya') NOT NULL,
   `nama_menu` varchar(255) DEFAULT NULL,
   `deskripsi` text DEFAULT NULL,
-  `harga` decimal(10,2) DEFAULT NULL
+  `harga` int(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `menu`
 --
 
-INSERT INTO `menu` (`id_menu`, `nama_menu`, `deskripsi`, `harga`) VALUES
-(5, 'Menu 1', 'Deskripsi Menu 1', 10.99),
-(6, 'Menu 2', 'Deskripsi Menu 2', 12.99),
-(7, 'Menu 3', 'Deskripsi Menu 3', 8.99);
+INSERT INTO `menu` (`id_menu`, `id_restoran`, `kategori`, `nama_menu`, `deskripsi`, `harga`) VALUES
+(8, 19, 'makanan', 'Nasi + Paha Ayam', 'Ayam Geprek Layla , Arah RS.Bhayangkara ke arah utara 100 Meter', 14000);
 
 -- --------------------------------------------------------
 
@@ -89,20 +80,17 @@ CREATE TABLE `order` (
 
 CREATE TABLE `restoran` (
   `id_restoran` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL,
-  `nama` varchar(255) DEFAULT NULL,
+  `nama_restoran` varchar(255) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL,
-  `level` varchar(50) DEFAULT NULL
+  `level` enum('Restoran','Angkringan') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `restoran`
 --
 
-INSERT INTO `restoran` (`id_restoran`, `id_menu`, `nama`, `alamat`, `level`) VALUES
-(16, 5, 'Restoran A', 'Alamat Restoran A', 'Cepat Saji'),
-(17, 6, 'Restoran B', 'Alamat Restoran B', 'Mewah'),
-(18, 7, 'Restoran C', 'Alamat Restoran C', 'Khas Daerah');
+INSERT INTO `restoran` (`id_restoran`, `nama_restoran`, `alamat`, `level`) VALUES
+(19, 'Ayam Geprek Layla', 'Jl. A.R. Saleh No.70, Kauman, Kec. Nganjuk, Kabupaten Nganjuk, Jawa Timur 64411', 'Restoran');
 
 -- --------------------------------------------------------
 
@@ -127,7 +115,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nama_lengkap`, `no_telpon`, `jenis_kelamin`, `tanggal_lahir`, `tempat_lahir`, `role`, `email`, `password`) VALUES
-(1, 'akun pemulihan', '089999999999', 'laki-laki', '2023-11-01', 'Surga', 'admin', 'akunceer1satu@gmail.com', '1234567890poiuytrewqasdfghjkllkmnbvcxzz');
+(1, 'akun pemulihan', '089999999999', 'laki-laki', '2023-11-01', 'Surga', 'admin', 'akunceer1satu@gmail.com', '1234567890poiuytrewqasdfghjkllkmnbvcxzz'),
+(15, 'Fadillah wahyu', '083671662618', 'laki-laki', '2004-02-27', 'Nganjuk', 'admin', 'Fadillahwahyunugraha@gmail.com', '$2y$10$gmaD4WlI2fNc8Sr0ltqwNO5fW4SJuiiUudMNueVJOaTi0rMHhmeOK');
 
 -- --------------------------------------------------------
 
@@ -158,7 +147,8 @@ INSERT INTO `verifikasi` (`id_verifikasi`, `email`, `kode_otp`, `link`, `deskrip
 (40, 'fadillahwahyunugraha@gmail.com', '544615', '', '', NULL, '2023-11-22 03:01:47', '0000-00-00 00:00:00', 1, NULL),
 (41, 'fadillahwahyunugraha@gmail.com', '084935', '', '', NULL, '2023-11-22 03:14:38', '2023-11-22 03:15:00', 1, NULL),
 (42, 'fadillahwahyunugraha@gmail.com', '965846', '', '', NULL, '2023-11-22 03:52:17', '2023-11-22 03:55:46', 1, NULL),
-(43, 'fadillahwahyunugraha@gmail.com', '584753', '', '', NULL, '2023-11-22 04:55:27', '0000-00-00 00:00:00', 1, NULL);
+(43, 'fadillahwahyunugraha@gmail.com', '584753', '', '', NULL, '2023-11-22 04:55:27', '0000-00-00 00:00:00', 1, NULL),
+(44, 'fadillahwahyunugraha@gmail.com', '652610', '', '', NULL, '2023-11-27 16:45:10', '0000-00-00 00:00:00', 1, NULL);
 
 --
 -- Indexes for dumped tables
@@ -168,6 +158,7 @@ INSERT INTO `verifikasi` (`id_verifikasi`, `email`, `kode_otp`, `link`, `deskrip
 -- Indeks untuk tabel `detail_menu`
 --
 ALTER TABLE `detail_menu`
+  ADD PRIMARY KEY (`id_detail_menu`),
   ADD KEY `id_restoran` (`id_restoran`),
   ADD KEY `id_menu` (`id_menu`);
 
@@ -175,7 +166,8 @@ ALTER TABLE `detail_menu`
 -- Indeks untuk tabel `menu`
 --
 ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id_menu`);
+  ADD PRIMARY KEY (`id_menu`),
+  ADD KEY `id_restoran` (`id_restoran`);
 
 --
 -- Indeks untuk tabel `order`
@@ -190,8 +182,7 @@ ALTER TABLE `order`
 -- Indeks untuk tabel `restoran`
 --
 ALTER TABLE `restoran`
-  ADD PRIMARY KEY (`id_restoran`),
-  ADD UNIQUE KEY `id_menu` (`id_menu`);
+  ADD PRIMARY KEY (`id_restoran`);
 
 --
 -- Indeks untuk tabel `users`
@@ -211,10 +202,16 @@ ALTER TABLE `verifikasi`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `detail_menu`
+--
+ALTER TABLE `detail_menu`
+  MODIFY `id_detail_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `order`
@@ -226,19 +223,19 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT untuk tabel `restoran`
 --
 ALTER TABLE `restoran`
-  MODIFY `id_restoran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_restoran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `verifikasi`
 --
 ALTER TABLE `verifikasi`
-  MODIFY `id_verifikasi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_verifikasi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -250,6 +247,12 @@ ALTER TABLE `verifikasi`
 ALTER TABLE `detail_menu`
   ADD CONSTRAINT `detail_menu_ibfk_1` FOREIGN KEY (`id_restoran`) REFERENCES `restoran` (`id_restoran`),
   ADD CONSTRAINT `detail_menu_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
+
+--
+-- Ketidakleluasaan untuk tabel `menu`
+--
+ALTER TABLE `menu`
+  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_restoran`) REFERENCES `restoran` (`id_restoran`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `order`
