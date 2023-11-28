@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Nov 2023 pada 22.56
+-- Waktu pembuatan: 28 Nov 2023 pada 01.35
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -44,7 +44,6 @@ CREATE TABLE `menu` (
   `id_restoran` int(11) NOT NULL,
   `kategori` enum('makanan','minuman','snack','lainnya') NOT NULL,
   `nama_menu` varchar(255) DEFAULT NULL,
-  `deskripsi` text DEFAULT NULL,
   `harga` int(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -52,8 +51,11 @@ CREATE TABLE `menu` (
 -- Dumping data untuk tabel `menu`
 --
 
-INSERT INTO `menu` (`id_menu`, `id_restoran`, `kategori`, `nama_menu`, `deskripsi`, `harga`) VALUES
-(8, 19, 'makanan', 'Nasi + Paha Ayam', 'Ayam Geprek Layla , Arah RS.Bhayangkara ke arah utara 100 Meter', 14000);
+INSERT INTO `menu` (`id_menu`, `id_restoran`, `kategori`, `nama_menu`, `harga`) VALUES
+(8, 19, 'makanan', 'Nasi + Paha Ayam', 14000),
+(9, 19, 'makanan', 'Ayam krispy', 12000),
+(10, 20, 'minuman', 'JOSSUA', 3000),
+(11, 20, 'minuman', 'Nutrisari', 3000);
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,8 @@ CREATE TABLE `restoran` (
 --
 
 INSERT INTO `restoran` (`id_restoran`, `nama_restoran`, `alamat`, `level`) VALUES
-(19, 'Ayam Geprek Layla', 'Jl. A.R. Saleh No.70, Kauman, Kec. Nganjuk, Kabupaten Nganjuk, Jawa Timur 64411', 'Restoran');
+(19, 'Ayam Geprek Layla', 'Jl. A.R. Saleh No.70, Kauman, Kec. Nganjuk, Kabupaten Nganjuk, Jawa Timur 64411', 'Restoran'),
+(20, 'Warkop WW', 'Kauman, Kec.Nganjuk, Kabupaten Nganjuk, Jawa Timur 64415', 'Angkringan');
 
 -- --------------------------------------------------------
 
@@ -211,7 +214,7 @@ ALTER TABLE `detail_menu`
 -- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `order`
@@ -223,7 +226,7 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT untuk tabel `restoran`
 --
 ALTER TABLE `restoran`
-  MODIFY `id_restoran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_restoran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

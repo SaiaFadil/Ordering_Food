@@ -18,9 +18,6 @@ data class ModelMenuHome(
     @SerializedName("nama_menu")
     val nama_menu : String,
     @Expose
-    @SerializedName("deskripsi")
-    val deskripsi : String,
-    @Expose
     @SerializedName("harga")
     val harga : String,
     @Expose
