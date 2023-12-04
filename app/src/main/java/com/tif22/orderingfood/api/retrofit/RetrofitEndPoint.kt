@@ -1,13 +1,16 @@
 package com.tif22.orderingfood.api.retrofit
 
 import com.tif22.orderingfood.data.response.ResponseMenuHome
+import com.tif22.orderingfood.data.response.ResponsePoster
 import com.tif22.orderingfood.data.response.ResponseResetOtp
 import com.tif22.orderingfood.data.response.ResponseWithoutData
 import com.tif22.orderingfood.data.response.UsersResponse
 import com.tif22.orderingfood.data.response.VerifyResponse
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.POST
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET
 
 interface RetrofitEndPoint {
 
@@ -65,6 +68,10 @@ interface RetrofitEndPoint {
     fun MenuHome(
         @Field("kategori") kategori : String
     ) : retrofit2.Call<ResponseMenuHome>
+
+
+    @GET("home/getPoster.php")
+    fun getPoster(): Call<ResponsePoster>
 
 
 }

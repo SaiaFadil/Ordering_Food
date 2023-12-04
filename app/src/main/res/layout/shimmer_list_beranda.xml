@@ -1,0 +1,124 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_90sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:backgroundTint="@color/graydark"
+    android:padding="@dimen/_5sdp"
+    app:cardElevation="@dimen/_5sdp"
+    app:cardMaxElevation="@dimen/_20sdp"
+    android:background="@color/graydark"
+    app:strokeColor="@color/grey"
+    app:strokeWidth="@dimen/_1sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_5sdp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/_7sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:strokeColor="@color/card_bg_color">
+
+            <ImageView
+                android:id="@+id/image_card_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="fill"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nama_card_home"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:background="@color/grey"
+                    android:backgroundTint="@color/grey"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:background="@color/grey"
+                    android:backgroundTint="@color/grey"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:background="@color/grey"
+                    android:backgroundTint="@color/grey"
+                    android:textStyle="bold" />
+
+
+
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/tombol_pesan_item_card_home"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:backgroundTint="@color/grey"
+                    android:elevation="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:strokeColor="@color/card_bg_color">
+
+
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/like_item_card_home"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="top|right"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleType="fitXY"
+                android:background="@color/grey"
+                android:backgroundTint="@color/grey"/>
+        </RelativeLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

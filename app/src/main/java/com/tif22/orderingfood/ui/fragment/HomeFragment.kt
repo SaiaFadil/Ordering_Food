@@ -1,15 +1,21 @@
 package com.tif22.orderingfood.ui.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import com.tif22.orderingfood.R
 import com.tif22.orderingfood.adapter.AdapterCardHome
 import com.tif22.orderingfood.adapter.AdapterPromoDashboard
@@ -17,48 +23,57 @@ import com.tif22.orderingfood.api.retrofit.RetrofitClient
 import com.tif22.orderingfood.api.retrofit.RetrofitEndPoint
 import com.tif22.orderingfood.data.model.ModelMenuHome
 import com.tif22.orderingfood.data.response.ResponseMenuHome
+import com.tif22.orderingfood.data.response.ResponsePoster
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
+    private lateinit var shimmercardhome: ShimmerFrameLayout
+    private var fadeIn: Animation? = null
+
     private lateinit var recyclerView: RecyclerView
-    private val kategori: String = "makanan"
+    private lateinit var kategori: String
 
     private lateinit var btn_makanan_home: MaterialButton
     private lateinit var btn_minuman_home: MaterialButton
     private lateinit var btn_snack_home: MaterialButton
     private lateinit var btn_lainnya_home: MaterialButton
+    private lateinit var cardPager: MaterialCardView
     private lateinit var viewPager: ViewPager
 
-    private val imageUrls = listOf(
-        "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/08/17/1095053953.jpg",
-        "https://4.bp.blogspot.com/-dQG0lBiNBW8/VwNnfOyGM9I/AAAAAAAADsw/aAM_8E4Ad8IH344I7HwVEXy0QSGDvo_4w/s1600/bn-20160307161131.jpg"
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View? = inflater.inflate(R.layout.fragment_beranda, container, false)
         viewPager = view?.findViewById(R.id.viewPager)!!
 
+        fadeIn = AnimationUtils.loadAnimation(context, R.anim.show_data_shimmer)
+
+
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        shimmercardhome = view.findViewById(R.id.shimmercardhome)
 
         btn_makanan_home = view.findViewById(R.id.btn_makanan_home)
         btn_minuman_home = view.findViewById(R.id.btn_minuman_home)
         btn_snack_home = view.findViewById(R.id.btn_snack_home)
         btn_lainnya_home = view.findViewById(R.id.btn_lainnya_home)
+        cardPager = view.findViewById(R.id.cardpager)
+
         btn_makanan_home.setOnClickListener(this)
         btn_minuman_home.setOnClickListener(this)
         btn_snack_home.setOnClickListener(this)
         btn_lainnya_home.setOnClickListener(this)
 
-        val adapterPromo = AdapterPromoDashboard(childFragmentManager, imageUrls)
-        viewPager.adapter = adapterPromo
+        getPoster()
 
+
+
+        kategori = "makanan"
         tampilkanData()
 
         return view
@@ -71,30 +86,78 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 btn_minuman_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_snack_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_lainnya_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
+                kategori = "makanan"
+                tampilkanData()
             }
+
             R.id.btn_minuman_home -> {
                 btn_minuman_home.backgroundTintList = resources.getColorStateList(R.color.primary)
                 btn_makanan_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_snack_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_lainnya_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
+                kategori = "minuman"
+                tampilkanData()
             }
+
             R.id.btn_snack_home -> {
                 btn_snack_home.backgroundTintList = resources.getColorStateList(R.color.primary)
                 btn_makanan_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_minuman_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_lainnya_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
+                kategori = "snack"
+                tampilkanData()
             }
+
             R.id.btn_lainnya_home -> {
                 btn_lainnya_home.backgroundTintList = resources.getColorStateList(R.color.primary)
                 btn_makanan_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_snack_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
                 btn_minuman_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
+                kategori = "lainnya"
+                tampilkanData()
             }
         }
     }
 
+    private fun getPoster() {
+        val retrofitEndPoint: RetrofitEndPoint =
+            RetrofitClient.connection.create(RetrofitEndPoint::class.java)
+        val call: Call<ResponsePoster> = retrofitEndPoint.getPoster()
+        call.enqueue(object : Callback<ResponsePoster> {
+            @SuppressLint("SuspiciousIndentation")
+            override fun onResponse(
+                call: Call<ResponsePoster>,
+                response: Response<ResponsePoster>
+            ) {
+                if (response.isSuccessful && response.body()?.status.equals("success")) {
+
+                    val serverUrl: String = RetrofitClient.BASE_URL
+                    val posterUrls = mutableListOf<String>()
+                    response.body()?.data?.forEach { poster ->
+                        val posterUrl = serverUrl + poster.poster
+                        posterUrls.add(posterUrl)
+                        Log.e("urlimage", posterUrl)
+                        val adapterPromo = AdapterPromoDashboard(childFragmentManager, posterUrls)
+                        viewPager.adapter = adapterPromo
+                    }
+
+
+                } else {
+                    Toast.makeText(activity, "Failed to get posters", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponsePoster>, t: Throwable) {
+                t.printStackTrace()
+                Toast.makeText(activity, t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
     private fun tampilkanData() {
-        val retrofitEndPoint: RetrofitEndPoint = RetrofitClient.connection.create(RetrofitEndPoint::class.java)
+        val retrofitEndPoint: RetrofitEndPoint =
+            RetrofitClient.connection.create(RetrofitEndPoint::class.java)
         val call: Call<ResponseMenuHome> = retrofitEndPoint.MenuHome(kategori)
         call.enqueue(object : Callback<ResponseMenuHome> {
             override fun onResponse(
@@ -102,13 +165,30 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 response: Response<ResponseMenuHome>
             ) {
                 if (response.body()?.status.equals("success")) {
-                    val responseModel: ResponseMenuHome? = response.body()
-                    val data: List<ModelMenuHome>? = responseModel?.data
 
-                    val adapterCardHome = AdapterCardHome(data)
-                    recyclerView.adapter = adapterCardHome
+
+                    if (response.body()?.data?.isEmpty() == true) {
+                        shimmercardhome.startShimmer()
+                        recyclerView.visibility = View.GONE
+
+                    } else {
+                        recyclerView.visibility = View.VISIBLE
+                        recyclerView.startAnimation(fadeIn)
+                        shimmercardhome.visibility = View.GONE
+                        shimmercardhome.stopShimmer()
+                        val responseModel: ResponseMenuHome? = response.body()
+                        val data: List<ModelMenuHome>? = responseModel?.data
+                        val adapterCardHome = AdapterCardHome(data)
+                        recyclerView.adapter = adapterCardHome
+
+                    }
+
                 } else {
-                    Toast.makeText(activity, "gagal " + response.body()?.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        activity,
+                        "gagal " + response.body()?.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 

@@ -236,9 +236,11 @@
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:backgroundTint="@color/primary"
                 android:fontFamily="@font/rowdiesregular"
+                android:paddingTop="@dimen/_minus10sdp"
+                android:paddingBottom="@dimen/_minus10sdp"
                 android:text="Login"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_15ssp"
+                android:textSize="@dimen/_19ssp"
                 app:cornerRadius="@dimen/_10sdp" />
 
             <TableLayout

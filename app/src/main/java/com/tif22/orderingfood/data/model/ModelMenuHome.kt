@@ -28,6 +28,9 @@ data class ModelMenuHome(
     val alamat : String,
     @Expose
     @SerializedName("level")
-    val level : String
+    val level : String,
+    @Expose
+    @SerializedName("gambar_menu")
+    val gambar_menu : String
 
 )

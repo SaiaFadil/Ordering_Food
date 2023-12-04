@@ -3,9 +3,13 @@ package com.tif22.orderingfood.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tif22.orderingfood.R
+import com.tif22.orderingfood.api.retrofit.RetrofitClient
 import com.tif22.orderingfood.data.model.ModelMenuHome
 
 class AdapterCardHome(private val data: List<ModelMenuHome>?) : RecyclerView.Adapter<AdapterCardHome.ViewHolder>() {
@@ -18,9 +22,17 @@ class AdapterCardHome(private val data: List<ModelMenuHome>?) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item: ModelMenuHome = data!![position]
+        val serverUrl: String = RetrofitClient.BASE_URL
+        val gambarUrl = serverUrl + item.gambar_menu
         holder.nama_card_home.text = item.nama_menu
         holder.restoran_card_home.text = item.nama_restoran
-        holder.harga_card_home.text = item.harga.toString()
+        holder.harga_card_home.text = item.harga
+
+
+        Glide.with(holder.itemView.context)
+            .load(gambarUrl)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .into(holder.image_card_home)
     }
 
     override fun getItemCount(): Int {
@@ -31,5 +43,6 @@ class AdapterCardHome(private val data: List<ModelMenuHome>?) : RecyclerView.Ada
         val nama_card_home: TextView = itemView.findViewById(R.id.nama_card_home)
         val restoran_card_home: TextView = itemView.findViewById(R.id.restoran_card_home)
         val harga_card_home: TextView = itemView.findViewById(R.id.harga_item_card_dashboard)
+        val image_card_home: ImageView = itemView.findViewById(R.id.image_card_home)
     }
 }
