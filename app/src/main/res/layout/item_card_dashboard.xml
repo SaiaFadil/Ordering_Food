@@ -105,40 +105,13 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/tombol_pesan_item_card_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:backgroundTint="@color/primary"
-                    android:elevation="@dimen/_10sdp"
-                    app:cardCornerRadius="@dimen/_5sdp"
-                    app:strokeColor="@color/card_bg_color">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:fontFamily="@font/poppinssemibold"
-                        android:text="Pesan"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12ssp"
-                        android:textStyle="bold" />
-                </com.google.android.material.card.MaterialCardView>
-            </FrameLayout>
-
-            <com.google.android.material.imageview.ShapeableImageView
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
                 android:id="@+id/like_item_card_home"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
+                android:backgroundTint="@color/transparent"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="top|right"
                 android:layout_marginTop="@dimen/_10sdp"

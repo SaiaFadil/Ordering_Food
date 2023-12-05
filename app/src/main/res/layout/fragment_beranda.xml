@@ -12,8 +12,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:scrollbars="none"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/dataSemua"
@@ -22,11 +22,12 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:id="@+id/berandaatas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
@@ -69,11 +70,11 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardcarihome"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:background="@color/card_cari_bg_color"
                 android:backgroundTint="@color/card_cari_bg_color">
 
@@ -93,7 +94,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:text="Cari"
-                        android:textColor="@color/Et_Hint_Color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
@@ -101,11 +102,11 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardpager"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_140sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:cardElevation="@dimen/_10sdp">
 
@@ -124,11 +125,11 @@
                 android:scrollbars="none">
 
                 <LinearLayout
-                    android:paddingLeft="@dimen/_20sdp"
-                    android:paddingRight="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:paddingRight="@dimen/_20sdp">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_makanan_home"
@@ -192,50 +193,46 @@
                         app:cornerRadius="@dimen/_10sdp"
                         app:strokeColor="@color/graydark"
                         app:strokeWidth="@dimen/_1sdp" />
-
-
                 </LinearLayout>
-
             </HorizontalScrollView>
-
             <LinearLayout
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:orientation="vertical">
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:id="@+id/shimmercardhome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                    <include layout="@layout/shimmer_list_beranda" />
-                    <include layout="@layout/shimmer_list_beranda" />
-                    <include layout="@layout/shimmer_list_beranda" />
+                        <include layout="@layout/shimmer_list_beranda" />
+                        <include layout="@layout/shimmer_list_beranda" />
+                        <include layout="@layout/shimmer_list_beranda" />
                     </LinearLayout>
                 </com.facebook.shimmer.ShimmerFrameLayout>
-
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:scrollbars="none"
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:soundEffectsEnabled="true"/>
+                    android:scrollbars="none"
+                    android:soundEffectsEnabled="true"
+                    tools:listitem="@layout/item_card_dashboard" />
+
             </RelativeLayout>
-
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

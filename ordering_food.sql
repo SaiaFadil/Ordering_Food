@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Des 2023 pada 10.11
+-- Waktu pembuatan: 05 Des 2023 pada 15.45
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -118,8 +118,8 @@ CREATE TABLE `restoran` (
 
 INSERT INTO `restoran` (`id_restoran`, `nama_restoran`, `alamat`, `level`) VALUES
 (19, 'Ayam Geprek Layla', 'Jl. A.R. Saleh No.70, Kauman, Kec. Nganjuk, Kabupaten Nganjuk, Jawa Timur 64411', 'Restoran'),
-(20, 'Cak No Bakso', 'Pokok e nganjuk,Jawatimur,Indonesia', 'Angkringan'),
-(21, 'Angkringan Setyo', 'Jl.Letjend Suprapto 1B', 'Angkringan');
+(20, 'Cak No Bakso', 'Mangundikaran, Mangun Dikaran, Kec. Nganjuk, Kabupaten Nganjuk, Jawa Timur 64419', 'Angkringan'),
+(21, 'Angkringan Setyo', 'Jl. Veteran No.20-10, Nganjuk, Ganung Kidul, Kec. Nganjuk, Kabupaten Nganjuk, Jawa Timur 64419', 'Angkringan');
 
 -- --------------------------------------------------------
 

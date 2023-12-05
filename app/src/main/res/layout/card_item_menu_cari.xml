@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_100sdp"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:layout_marginRight="@dimen/_10sdp"
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:background="@color/secondary"
+    android:backgroundTint="@color/secondary"
+    android:elevation="@dimen/_10sdp"
+    app:cardCornerRadius="@dimen/_20sdp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_20sdp"
+
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinssemibold"
+                android:text="Rp."
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/harga_cari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinssemibold"
+                android:text="99999"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_alignParentLeft="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nama_menu_cari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/poppinssemibold"
+                android:text="Nama Menu"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp" />
+
+            <TextView
+                android:id="@+id/nama_restoran_cari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Nama Restoran"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp" />
+
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:layout_alignParentBottom="true"
+            android:id="@+id/btn_pesan_cari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_minus2sdp"
+            android:backgroundTint="@color/primary"
+            android:fontFamily="@font/rowdiesregular"
+            android:text="Pesan"
+            app:cornerRadius="@dimen/_1sdp"
+            android:paddingTop="@dimen/_minus10sdp"
+            android:paddingBottom="@dimen/_minus10sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp"/>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
         overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
     }
 }

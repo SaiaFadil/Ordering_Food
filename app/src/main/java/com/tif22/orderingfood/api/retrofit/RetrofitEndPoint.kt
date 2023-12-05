@@ -1,5 +1,7 @@
 package com.tif22.orderingfood.api.retrofit
 
+import com.tif22.orderingfood.data.response.ResponseDetailMenu
+import com.tif22.orderingfood.data.response.ResponseMenuCari
 import com.tif22.orderingfood.data.response.ResponseMenuHome
 import com.tif22.orderingfood.data.response.ResponsePoster
 import com.tif22.orderingfood.data.response.ResponseResetOtp
@@ -51,7 +53,7 @@ interface RetrofitEndPoint {
     @POST("account/GetOtp.php")
     fun ResetOtp(
         @Field("email") email : String
-        ) : retrofit2.Call<ResponseResetOtp>
+        ) : Call<ResponseResetOtp>
 
 
   @FormUrlEncoded
@@ -61,14 +63,27 @@ interface RetrofitEndPoint {
         @Field("type") type : String,
         @Field("action") action : String,
         @Field("id_user") id_user : String
-    ) : retrofit2.Call<VerifyResponse>
+    ) :Call<VerifyResponse>
 
     @FormUrlEncoded
     @POST("home/Tampil_menu_beranda.php")
     fun MenuHome(
         @Field("kategori") kategori : String
-    ) : retrofit2.Call<ResponseMenuHome>
+    ) : Call<ResponseMenuHome>
 
+
+    @FormUrlEncoded
+    @POST("home/Tampil_detail_menu.php")
+    fun TampilDetailMenu(
+        @Field("id_menu") id_menu : String
+    ) : Call<ResponseDetailMenu>
+
+
+    @FormUrlEncoded
+    @POST("home/Tampil_menu_cari.php")
+    fun TampilMenuCari(
+        @Field("nama_menu") nama_menu : String
+    ) : Call<ResponseMenuCari>
 
     @GET("home/getPoster.php")
     fun getPoster(): Call<ResponsePoster>

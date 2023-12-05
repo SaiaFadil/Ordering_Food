@@ -115,9 +115,6 @@ class LoginActivity : AppCompatActivity() {
 
     }//Akhir onCreate
 
-
-    //Login Google
-
     //fungsi cek login
     fun GetLogin() {
         val email = et_email.text.toString()

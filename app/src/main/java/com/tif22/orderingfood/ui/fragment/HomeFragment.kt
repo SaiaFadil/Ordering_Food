@@ -1,6 +1,9 @@
 package com.tif22.orderingfood.ui.fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +28,8 @@ import com.tif22.orderingfood.api.retrofit.RetrofitEndPoint
 import com.tif22.orderingfood.data.model.ModelMenuHome
 import com.tif22.orderingfood.data.response.ResponseMenuHome
 import com.tif22.orderingfood.data.response.ResponsePoster
+import com.tif22.orderingfood.ui.activity.DetailMenu
+import com.tif22.orderingfood.ui.activity.PencarianHome
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,27 +42,33 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var kategori: String
 
+    private lateinit var cardcarihome: MaterialCardView
     private lateinit var btn_makanan_home: MaterialButton
     private lateinit var btn_minuman_home: MaterialButton
     private lateinit var btn_snack_home: MaterialButton
     private lateinit var btn_lainnya_home: MaterialButton
     private lateinit var cardPager: MaterialCardView
     private lateinit var viewPager: ViewPager
+    private lateinit var berandaatas: RelativeLayout
+
+    private lateinit var showAnimin: Animation
+    private lateinit var swipe_down: Animation
+    private lateinit var show_alpha: Animation
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val view: View? = inflater.inflate(R.layout.fragment_beranda, container, false)
         viewPager = view?.findViewById(R.id.viewPager)!!
-
         fadeIn = AnimationUtils.loadAnimation(context, R.anim.show_data_shimmer)
-
-
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         shimmercardhome = view.findViewById(R.id.shimmercardhome)
+        cardcarihome = view.findViewById(R.id.cardcarihome)
+        berandaatas = view.findViewById(R.id.berandaatas)
 
         btn_makanan_home = view.findViewById(R.id.btn_makanan_home)
         btn_minuman_home = view.findViewById(R.id.btn_minuman_home)
@@ -64,10 +76,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
         btn_lainnya_home = view.findViewById(R.id.btn_lainnya_home)
         cardPager = view.findViewById(R.id.cardpager)
 
+
+        showAnimin = AnimationUtils.loadAnimation(context, R.anim.show_in)
+        swipe_down = AnimationUtils.loadAnimation(context, R.anim.swipe_down)
+        show_alpha = AnimationUtils.loadAnimation(context, R.anim.show_alpha)
+        ShowAnimasi()
+
         btn_makanan_home.setOnClickListener(this)
         btn_minuman_home.setOnClickListener(this)
         btn_snack_home.setOnClickListener(this)
         btn_lainnya_home.setOnClickListener(this)
+        cardcarihome.setOnClickListener(this)
 
         getPoster()
 
@@ -89,7 +108,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 kategori = "makanan"
                 tampilkanData()
             }
-
             R.id.btn_minuman_home -> {
                 btn_minuman_home.backgroundTintList = resources.getColorStateList(R.color.primary)
                 btn_makanan_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
@@ -98,7 +116,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 kategori = "minuman"
                 tampilkanData()
             }
-
             R.id.btn_snack_home -> {
                 btn_snack_home.backgroundTintList = resources.getColorStateList(R.color.primary)
                 btn_makanan_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
@@ -107,7 +124,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 kategori = "snack"
                 tampilkanData()
             }
-
             R.id.btn_lainnya_home -> {
                 btn_lainnya_home.backgroundTintList = resources.getColorStateList(R.color.primary)
                 btn_makanan_home.backgroundTintList = resources.getColorStateList(R.color.secondary)
@@ -116,9 +132,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 kategori = "lainnya"
                 tampilkanData()
             }
+            R.id.cardcarihome -> {
+                val intent = Intent(activity, PencarianHome::class.java)
+                activity?.startActivity(intent)
+                activity?.overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
+            }
         }
     }
-
     private fun getPoster() {
         val retrofitEndPoint: RetrofitEndPoint =
             RetrofitClient.connection.create(RetrofitEndPoint::class.java)
@@ -178,7 +198,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         shimmercardhome.stopShimmer()
                         val responseModel: ResponseMenuHome? = response.body()
                         val data: List<ModelMenuHome>? = responseModel?.data
-                        val adapterCardHome = AdapterCardHome(data)
+                        val adapterCardHome = AdapterCardHome(context,data)
                         recyclerView.adapter = adapterCardHome
 
                     }
@@ -197,5 +217,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 Toast.makeText(activity, t.message, Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun ShowAnimasi(){
+        cardPager.startAnimation(showAnimin)
+        cardcarihome.startAnimation(swipe_down)
+        berandaatas.startAnimation(show_alpha)
+
     }
 }
