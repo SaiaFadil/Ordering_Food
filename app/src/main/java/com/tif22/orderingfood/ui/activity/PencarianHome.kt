@@ -33,13 +33,9 @@ class PencarianHome : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var relatif: RelativeLayout
     private lateinit var relative: RelativeLayout
-
     private lateinit var fadeIn: Animation
     private lateinit var show_out: Animation
     private lateinit var showAnimin: Animation
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,11 +59,7 @@ class PencarianHome : AppCompatActivity() {
     }
 
 
-
-
-
-
-    private fun TampilPencarian(){
+    private fun TampilPencarian() {
         et_pencarian.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -84,7 +76,7 @@ class PencarianHome : AppCompatActivity() {
     }
 
 
-    private fun TampilData(s :String){
+    private fun TampilData(s: String) {
         val retrofitEndPoint: RetrofitEndPoint =
             RetrofitClient.connection.create(RetrofitEndPoint::class.java)
         val call: Call<ResponseMenuCari> = retrofitEndPoint.TampilMenuCari(s.toString())
@@ -107,7 +99,7 @@ class PencarianHome : AppCompatActivity() {
                         relatif.visibility = View.GONE
                         val responseModel: ResponseMenuCari? = response.body()
                         val data: List<ModelMenuCari>? = responseModel?.data
-                        val adapterCardCari = AdapterCardCari(applicationContext,data)
+                        val adapterCardCari = AdapterCardCari(applicationContext, data)
                         recyclerView.adapter = adapterCardCari
 
                     }

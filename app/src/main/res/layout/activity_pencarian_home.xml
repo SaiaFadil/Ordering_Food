@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondary"
     android:backgroundTint="@color/secondary"
     android:orientation="vertical"
-    android:background="@color/secondary"
     tools:context=".ui.activity.PencarianHome">
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardcaricari"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginRight="@dimen/_20sdp"
         android:background="@color/card_cari_bg_color"
         android:backgroundTint="@color/card_cari_bg_color">
-
-
 
 
         <LinearLayout
@@ -54,71 +52,72 @@
         android:layout_height="match_parent">
 
 
-    <TableLayout
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_minus10sdp">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_minus10sdp">
 
-        <TableRow android:gravity="center_horizontal">
+            <TableRow android:gravity="center_horizontal">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rowdiesregular"
-                android:shadowColor="@color/black"
-                android:shadowDx="0"
-                android:shadowDy="20"
-                android:shadowRadius="10"
-                android:text="Menu "
-                android:textColor="@color/white"
-                android:textSize="@dimen/_22ssp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="20"
+                    android:shadowRadius="10"
+                    android:text="Menu "
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_22ssp" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rowdiesregular"
-                android:shadowColor="@color/black"
-                android:shadowDx="0"
-                android:shadowDy="20"
-                android:shadowRadius="10"
-                android:text="Tidak "
-                android:textColor="@color/white"
-                android:textSize="@dimen/_22ssp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="20"
+                    android:shadowRadius="10"
+                    android:text="Tidak "
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_22ssp" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rowdiesregular"
-                android:shadowColor="@color/black"
-                android:shadowDx="0"
-                android:shadowDy="20"
-                android:shadowRadius="10"
-                android:text="Tersedia"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_22ssp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="20"
+                    android:shadowRadius="10"
+                    android:text="Tersedia"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_22ssp" />
 
-        </TableRow>
-    </TableLayout>
+            </TableRow>
+        </TableLayout>
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/relative"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:scrollbars="none"
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            tools:listitem="@layout/card_item_menu_cari"
-            android:soundEffectsEnabled="true"/>
+            android:scrollbars="none"
+            android:soundEffectsEnabled="true"
+            tools:listitem="@layout/card_item_menu_cari" />
 
     </RelativeLayout>
 

@@ -2,37 +2,36 @@ package com.tif22.orderingfood.ui.activity
 
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.HorizontalScrollView
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.tasks.Task
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.card.MaterialCardView
 import com.tif22.orderingfood.R
 import com.tif22.orderingfood.api.google.GoogleUsers
 import com.tif22.orderingfood.api.retrofit.RetrofitClient
 import com.tif22.orderingfood.api.retrofit.RetrofitEndPoint
+import com.tif22.orderingfood.data.model.UsersModel
 import com.tif22.orderingfood.data.response.UsersResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
+import java.lang.String
+import kotlin.Throwable
+import kotlin.toString
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -60,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         initComponent()
+
 
         //Deklarasi Animasi
         showAnimin = AnimationUtils.loadAnimation(this, R.anim.show_in)
@@ -91,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         //Pindah ke Lupa Katasandi
-        btn_lupasandi.setOnClickListener{
+        btn_lupasandi.setOnClickListener {
             val intent = Intent(applicationContext, EmailLupaSandi::class.java)
             startActivity(intent)
             finish()
@@ -138,17 +138,31 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     if (response.body() != null && response.body()?.status.equals("admin")) {
                         progressDialog.dismiss()
-                        Log.v("retrofit", "call admin success")
+                        //Menyimpan Data User
+                        val sharedPreferences = getSharedPreferences("prefLogin", MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        val user: UsersModel = response.body()!!.data
+                        editor.putString("id_user", String.valueOf(user.id_user))
+                        editor.putString("nama_lengkap", user.nama_lengkap)
+                        editor.putString("no_telpon", user.no_telpon)
+                        editor.putString("tanggal_lahir", user.tanggal_lahir)
+                        editor.putString("tempat_lahir", user.tempat_lahir)
+                        editor.putString("jenis_kelamin", user.jenis_kelamin)
+                        editor.putString("role", user.role)
+                        editor.putString("email", user.email)
+                        editor.apply()
+
                         val intent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(intent)
                         overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
                     } else if (response.body() != null && response.body()?.status.equals("user")) {
                         progressDialog.dismiss()
-                        Log.v("retrofit", "call user success")
+
+
                         val intent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(intent)
                         overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
-                    } else if (response.body() != null && response.body()?.status.equals("failed")){
+                    } else if (response.body() != null && response.body()?.status.equals("failed")) {
                         et_password.error = "Password Salah!"
                         et_password.requestFocus()
                         et_password.setText("")

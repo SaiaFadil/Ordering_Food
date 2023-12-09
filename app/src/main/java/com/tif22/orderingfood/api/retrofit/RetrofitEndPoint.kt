@@ -2,6 +2,7 @@ package com.tif22.orderingfood.api.retrofit
 
 import com.tif22.orderingfood.data.response.ResponseDetailMenu
 import com.tif22.orderingfood.data.response.ResponseMenuCari
+import com.tif22.orderingfood.data.response.ResponseMenuDisukai
 import com.tif22.orderingfood.data.response.ResponseMenuHome
 import com.tif22.orderingfood.data.response.ResponsePoster
 import com.tif22.orderingfood.data.response.ResponseResetOtp
@@ -77,6 +78,38 @@ interface RetrofitEndPoint {
     fun TampilDetailMenu(
         @Field("id_menu") id_menu : String
     ) : Call<ResponseDetailMenu>
+
+
+
+    @FormUrlEncoded
+    @POST("home/Tampil_disukai.php")
+    fun TampilDisukai(
+        @Field("id_user") id_user : String
+    ) : Call<ResponseMenuDisukai>
+
+
+
+    @FormUrlEncoded
+    @POST("home/Tambah_menyukai.php")
+    fun TambahDisukai(
+        @Field("id_user") id_user : String,
+        @Field("id_menu") id_menu : String
+    ) : Call<ResponseWithoutData>
+
+
+    @FormUrlEncoded
+    @POST("home/Hapus_menyukai.php")
+    fun HapusDisukai(
+        @Field("id_user") id_user : String,
+        @Field("id_menu") id_menu : String
+    ) : Call<ResponseWithoutData>
+
+    @FormUrlEncoded
+    @POST("home/Get_disukai.php")
+    fun CekDisukai(
+        @Field("id_user") id_user : String,
+        @Field("id_menu") id_menu : String
+    ) : Call<ResponseWithoutData>
 
 
     @FormUrlEncoded

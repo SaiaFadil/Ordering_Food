@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class UsersModel(
     @Expose
     @SerializedName("id_user")
-    val idUser: Int,
+    val id_user: Int,
     @Expose
     @SerializedName("nama_lengkap")
     val nama_lengkap: String,
@@ -27,7 +27,10 @@ data class UsersModel(
     val role: String,
     @Expose
     @SerializedName("email")
-    val email: String
+    val email: String,
+    @Expose
+    @SerializedName("alamat")
+    val alamat: String
 
 
 );
