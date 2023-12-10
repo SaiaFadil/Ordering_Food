@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -19,7 +18,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.tif22.orderingfood.R
 import com.tif22.orderingfood.api.retrofit.RetrofitClient
 import com.tif22.orderingfood.api.retrofit.RetrofitEndPoint
-import com.tif22.orderingfood.data.model.ModelMenuHome
+import com.tif22.orderingfood.data.model.ModelMenuCari
+import com.tif22.orderingfood.data.model.ModelMenuDisukai
 import com.tif22.orderingfood.data.response.ResponseWithoutData
 import com.tif22.orderingfood.ui.activity.DetailMenu
 import retrofit2.Call
@@ -27,10 +27,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
 
-class AdapterCardHome(
+class AdapterCardDisukai(
     private val context: Context?,
-    private val data: List<ModelMenuHome>?
-) : RecyclerView.Adapter<AdapterCardHome.ViewHolder>() {
+    private val data: List<ModelMenuDisukai>?,
+) : RecyclerView.Adapter<AdapterCardDisukai.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
@@ -39,7 +39,7 @@ class AdapterCardHome(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item: ModelMenuHome = data!![position]
+        val item: ModelMenuDisukai = data!![position]
         val serverUrl: String = RetrofitClient.BASE_URL
         val gambarUrl = serverUrl + item.gambar_menu
         holder.nama_card_home.text = item.nama_menu
@@ -51,14 +51,16 @@ class AdapterCardHome(
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(holder.image_card_home)
 
-        val sharedPreferences: SharedPreferences = context?.getSharedPreferences("prefLogin",AppCompatActivity.MODE_PRIVATE)!!
+
+        val sharedPreferences: SharedPreferences = context?.getSharedPreferences("prefLogin",
+            AppCompatActivity.MODE_PRIVATE)!!
         val id_user = sharedPreferences.getString("id_user", "")
         val retrofitEndPoint: RetrofitEndPoint = RetrofitClient.connection.create()
         var statusLike = false
 
         val call: Call<ResponseWithoutData> = retrofitEndPoint.CekDisukai(id_user.toString(), item.id_menu)
         call.enqueue(object : Callback<ResponseWithoutData> {
-            override fun onResponse(call: Call<ResponseWithoutData>,response: Response<ResponseWithoutData>) {
+            override fun onResponse(call: Call<ResponseWithoutData>, response: Response<ResponseWithoutData>) {
                 if (response.isSuccessful && response.body()?.status.equals("tersedia")) {
                     holder.like_item_card_home.setImageResource(R.drawable.like_on)
                     statusLike = true
@@ -111,17 +113,16 @@ class AdapterCardHome(
                         }
                     })
             }
-
         }
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailMenu::class.java)
             intent.putExtra("id_menu", item.id_menu)
-            intent.putExtra("model", "home")
-
+            intent.putExtra("model", "liked")
             context.startActivity(intent)
             (context as Activity).overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
         }
+
     }
 
     override fun getItemCount(): Int {

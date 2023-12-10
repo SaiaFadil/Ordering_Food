@@ -24,6 +24,14 @@ data class ModelMenuDisukai(
     val harga : String,
     @Expose
     @SerializedName("gambar_menu")
-    val gambar_menu : String
-
+    val gambar_menu : String,
+    @Expose
+    @SerializedName("nama_restoran")
+    val nama_restoran: String?,
+    @Expose
+    @SerializedName("alamat")
+    val alamat: String?,
+    @Expose
+    @SerializedName("level")
+    val level: String?
 )

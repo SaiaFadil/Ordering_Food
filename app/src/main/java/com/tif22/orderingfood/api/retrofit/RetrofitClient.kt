@@ -9,7 +9,7 @@ import com.google.gson.GsonBuilder
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    const val BASE_URL: String = "http://192.168.1.68/OrderingFood/FilePhp/" // local server
+    const val BASE_URL: String = "http://192.168.1.7/OrderingFood/FilePhp/" // local server
     val connection: Retrofit
         get() {
             val gson = GsonBuilder().setLenient().create()

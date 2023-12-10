@@ -7,23 +7,121 @@
     android:background="@color/secondary"
     android:backgroundTint="@color/secondary"
     android:orientation="vertical"
-    android:paddingTop="@dimen/_20sdp"
-    android:paddingLeft="@dimen/_20sdp"
-    android:paddingRight="@dimen/_20sdp">
+    tools:context=".ui.fragment.LikedFragment">
 
-    <ScrollView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardcaridisukai"
         android:layout_width="match_parent"
-        android:scrollbars="none"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:background="@color/card_cari_bg_color"
+        android:backgroundTint="@color/card_cari_bg_color">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:src="@drawable/ic_cari" />
 
+            <EditText
+                android:id="@+id/et_pencarian_disukai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/secondary"
+                android:backgroundTint="@color/card_cari_bg_color"
+                android:fontFamily="@font/robotoregular"
+                android:hint="Cari"
+                android:inputType="text"
+                android:textSize="@dimen/_14ssp"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
         </LinearLayout>
-    </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:scrollbars="none"
+            android:soundEffectsEnabled="true"
+            tools:listitem="@layout/item_card_dashboard" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relatif"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_minus10sdp">
+
+            <TableRow android:gravity="center_horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="20"
+                    android:shadowRadius="10"
+                    android:text="Menu "
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_22ssp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="20"
+                    android:shadowRadius="10"
+                    android:text="Tidak "
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_22ssp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rowdiesregular"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="0"
+                    android:shadowDy="20"
+                    android:shadowRadius="10"
+                    android:text="Tersedia"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_22ssp" />
+
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+
 
 </LinearLayout>

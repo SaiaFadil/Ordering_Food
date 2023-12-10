@@ -46,8 +46,7 @@ class MainActivity : AppCompatActivity() {
         const val FRAGMENT: String = "fragment"
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        super.onBackPressed()
-        overridePendingTransition(R.anim.layout_in, R.anim.layout_out)
     }
 }

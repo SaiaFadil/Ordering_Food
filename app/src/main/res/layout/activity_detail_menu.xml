@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,90 +9,7 @@
     android:orientation="vertical"
     tools:context=".ui.activity.DetailMenu">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/_10sdp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_minus5sdp"
-            android:layout_marginRight="@dimen/_minus5sdp"
-            android:background="@color/secondary"
-            android:backgroundTint="@color/secondary"
-            app:strokeColor="@color/secondary"
-            android:elevation="@dimen/_10sdp"
-            >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_minus5sdp"
-                    android:fontFamily="@font/poppinsregular"
-                    android:text="Harga"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp" />
-
-                <LinearLayout
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppinssemibold"
-                        android:text="Rp."
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_16ssp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/harga_detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppinssemibold"
-                        android:text="99999"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_16ssp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_pesan_detail"
-                android:layout_gravity="right|center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_30sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:backgroundTint="@color/primary"
-                android:fontFamily="@font/rowdiesregular"
-                android:text="Pesan Sekarang"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15ssp"
-                app:cornerRadius="@dimen/_10sdp" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -143,83 +60,193 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_190sdp"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    app:cardCornerRadius="@dimen/_20sdp"
-                    app:cardElevation="@dimen/_20sdp"
-                    app:strokeColor="@color/secondary"
-                    app:strokeWidth="@dimen/_1sdp">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/gambar_detail_menu"
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmerdetail"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/makanan1" />
+                        android:layout_height="wrap_content">
 
-                </com.google.android.material.card.MaterialCardView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_20sdp"
+                            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/nama_menu_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/poppinssemibold"
-                    android:text="Nama Menu"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_20ssp" />
+                            <include layout="@layout/shimmer_detail_menu" />
+                        </LinearLayout>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/nama_restoran_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:fontFamily="@font/poppinsregular"
-                    android:text="Nama Restoran"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp" />
-
-                <View
+                <LinearLayout
+                    android:id="@+id/lineardata"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_3sdp"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
-                    android:background="@android:color/darker_gray"
-                    android:backgroundTint="@color/white" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:text="Alamat"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp" />
+                    android:orientation="vertical">
 
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_190sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        app:cardCornerRadius="@dimen/_20sdp"
+                        app:cardElevation="@dimen/_20sdp"
+                        app:strokeColor="@color/secondary"
+                        app:strokeWidth="@dimen/_1sdp">
 
-                <TextView
-                    android:id="@+id/alamat_menu_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginRight="@dimen/_30sdp"
-                    android:fontFamily="@font/poppinsregular"
-                    android:text="Gataunasdhfliuahodiuhfoqiuherofiuhaiudhfouhqoeiuhfluhidulhflqueujf"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp" />
+                        <ImageView
+                            android:id="@+id/gambar_detail_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:scaleType="centerCrop"/>
 
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/nama_menu_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/poppinssemibold"
+                        android:text="Nama Menu"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_20ssp" />
+
+                    <TextView
+                        android:id="@+id/nama_restoran_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="Nama Restoran"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_3sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
+                        android:background="@android:color/darker_gray"
+                        android:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="Alamat"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp" />
+
+                    <TextView
+                        android:id="@+id/alamat_menu_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_30sdp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="Gataunasdhfliuahodiuhfoqiuherofiuhaiudhfouhqoeiuhfluhidulhflqueujf"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp" />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/relatif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/_10sdp">
 
-</RelativeLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_minus5sdp"
+            android:layout_marginRight="@dimen/_minus5sdp"
+            android:background="@color/secondary"
+            android:backgroundTint="@color/secondary"
+
+            android:elevation="@dimen/_10sdp"
+            app:strokeColor="@color/secondary">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_minus5sdp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:text="Harga"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinssemibold"
+                        android:text="Rp."
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/harga_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppinssemibold"
+                        android:text="99999"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pesan_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:backgroundTint="@color/primary"
+                android:fontFamily="@font/rowdiesregular"
+                android:text="Pesan Sekarang"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                app:cornerRadius="@dimen/_10sdp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</LinearLayout>

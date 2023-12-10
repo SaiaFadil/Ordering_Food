@@ -118,6 +118,14 @@ interface RetrofitEndPoint {
         @Field("nama_menu") nama_menu : String
     ) : Call<ResponseMenuCari>
 
+
+    @FormUrlEncoded
+    @POST("home/Tampil_disukai_cari.php")
+    fun TampilDisukaiCari(
+        @Field("id_user") id_user : String,
+        @Field("nama_menu") nama_menu : String
+    ) : Call<ResponseMenuDisukai>
+
     @GET("home/getPoster.php")
     fun getPoster(): Call<ResponsePoster>
 

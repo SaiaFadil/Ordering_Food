@@ -93,7 +93,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/harga_item_card_dashboard"
+                        android:id="@+id/harga_item_card_home"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppinssemibold"
